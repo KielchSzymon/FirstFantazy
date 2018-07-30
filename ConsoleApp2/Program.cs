@@ -52,9 +52,9 @@ namespace ConsoleApp2
 
             Levels myLevels = new Levels();
 
-           
+            #region levels
 
-             myHero = myLevels.LoadLevel1(myHero);
+            myHero = myLevels.LoadLevel1(myHero);
 
             if (myHero.IsLife == true)
             {
@@ -70,6 +70,9 @@ namespace ConsoleApp2
                 Console.WriteLine("End of the game.");
                 Console.WriteLine("Press any key to continue...");
             }
+
+            #endregion
+
             Console.ReadKey();
         }
     }
