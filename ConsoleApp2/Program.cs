@@ -52,6 +52,8 @@ namespace ConsoleApp2
 
             Levels myLevels = new Levels();
 
+            //to jest test komentarza dla gita jako zmiana
+
              myHero = myLevels.LoadLevel1(myHero);
 
             if (myHero.IsLife == true)
