@@ -52,7 +52,7 @@ namespace ConsoleApp2
 
             Levels myLevels = new Levels();
 
-           // myHero = myLevels.LoadLevel1(myHero);
+             myHero = myLevels.LoadLevel1(myHero);
 
             if (myHero.IsLife == true)
             {
