@@ -32,12 +32,12 @@ namespace FirstFantazy.Levels
 
                 if (direction == 1)
                 {
-                    if (hero.BackPack.Count == 0)
+                    if (!hero.backPack.ContainsKey("items"))
                     {
                         Console.WriteLine("Giniesz! Nie widzisz gdzie idziesz i niestety potykasz się wpadając w rospadlinę.");
                         hero.IsLife = false;
                     }
-                    else
+                    else if (hero.backPack.ContainsKey("items") && hero.backPack["items"].Contains("torch"))
                     {
                         Console.WriteLine("Dzięki pochodni udaje Ci się przejść do kolejnej jaskini.");
                         Console.WriteLine();
@@ -49,18 +49,15 @@ namespace FirstFantazy.Levels
                 }
                 else
                 {
-                    if (hero.BackPack.Count == 0)
+                    if (hero.backPack.Count == 0)
                     {
                         Console.WriteLine("Zanjdujesz palącą się pochodnię.");
-                        hero.BackPack.Add("torch");
+                        hero.backPack ["items"]= new List<object>();
+                        hero.backPack["items"].Add("torch");
                     }
-                    else
+                    else if(hero.backPack.ContainsKey("items") && hero.backPack["items"].Contains("torch"))
                     {
-                        Console.WriteLine("Mając pochodnie, widzisz drogę. Przeciskasz się przez sczelinę i docierasz do drugiej jaskini");
-                        Console.WriteLine();
-                        Console.WriteLine("Gratulacje, ukończyłeś poziom!");
-                        Console.ReadKey();
-                        hero.LevelEnd = false;
+                        Console.WriteLine("Tu już nic nie ma");
                     }
                 }
 
@@ -131,10 +128,8 @@ namespace FirstFantazy.Levels
                 if(hero.HeroDirection("Wybierz drogę (1) lub (2)") == 1)
                 {
                     Console.WriteLine( "Spotykasz bohatera numer 2, który rzuca ci kij z ostrzeżeniem uwaga nadchodzą!");
-                    hero.Inventory["Stick"] = new List<object>();
-                    hero.Inventory["Stick"].Add(new Stick(2, 15, 1));
+                    hero.Item = new Stick(2, 15, 1);
 
-                    var weapon = hero.Inventory["Stick"];
                     hero2.HeroCondition();
                 }
                 else

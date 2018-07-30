@@ -54,11 +54,11 @@ namespace ConsoleApp2
 
             #region levels
 
-            myHero = myLevels.LoadLevel1(myHero);
+           myHero = myLevels.LoadLevel1(myHero);
 
             if (myHero.IsLife == true)
             {
-                myHero = myLevels.LoadLevel2(myHero);
+               // myHero = myLevels.LoadLevel2(myHero);
             }
             if (myHero.IsLife == true)
             {

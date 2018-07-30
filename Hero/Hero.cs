@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFantazy.Player.Weapon;
+using System;
 using System.Collections.Generic;
 
 namespace FirstFantazy.Player
@@ -11,13 +12,21 @@ namespace FirstFantazy.Player
             get { return name; }
             set { name = "Warrior " + value; }
         }
+
+        private object item;
+        public object Item
+        {
+            get { return item; }
+            set { ActiveItem(value); }
+        }
+
         public int Life { get; set; }
         public int Durability { get; set; }
         public bool IsLife { get; set; }
         public bool LevelEnd { get; set; }
-        public List<string> BackPack { get; set; }
-        public Dictionary<string, List <object>> Inventory { get; set; }
-        public int Strength { get; set;} 
+        public object[] Inventory { get; set; }
+        public int Strength { get; set;}
+        public Dictionary<string, List<object>> backPack;
 
         public Hero()
         {
@@ -26,7 +35,8 @@ namespace FirstFantazy.Player
             Durability = 200;
             IsLife = true;
             LevelEnd = true;
-            BackPack = new List<string>();
+            Inventory = new object[5];
+            backPack = new Dictionary<string, List<object>>();
         } 
 
         public Hero(string Name, int life, int durability)
@@ -36,9 +46,9 @@ namespace FirstFantazy.Player
             Durability = durability;
             IsLife = true;
             LevelEnd = true;
-            BackPack = new List<string>();
+            backPack = new Dictionary<string, List<object>>();
             Strength = 10;
-            Inventory = new Dictionary<string, List<object>>();
+            Inventory = new object[5];
         }
 
         public void HurtHero()
@@ -48,6 +58,16 @@ namespace FirstFantazy.Player
             {
                 Life--;
             } 
+        }
+
+        private void ActiveItem(object newItem)
+        {
+            if(newItem is Stick)
+            {
+                backPack["Stick"] = new List<object>();
+                backPack["Stick"].Add(newItem);
+            }
+            throw new NotImplementedException();
         }
 
         public void HeroCondition()
