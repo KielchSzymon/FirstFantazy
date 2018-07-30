@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstFantazy", "ConsoleApp2\FirstFantazy.csproj", "{16F4F910-D26D-4240-844B-DBDA0734CB92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hero", "Hero\Hero.csproj", "{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16F4F910-D26D-4240-844B-DBDA0734CB92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F4F910-D26D-4240-844B-DBDA0734CB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F4F910-D26D-4240-844B-DBDA0734CB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F4F910-D26D-4240-844B-DBDA0734CB92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8D9EAB0-613C-44A6-95D8-1FB5BD588D25}
+	EndGlobalSection
+EndGlobal
