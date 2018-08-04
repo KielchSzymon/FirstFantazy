@@ -129,9 +129,41 @@ namespace FirstFantazy.Levels
                 {
                     Console.WriteLine( "Spotykasz bohatera numer 2, który rzuca ci kij z ostrzeżeniem uwaga nadchodzą!");
                    
-                    hero.Inventory[0] = new Weapon(2, 15, 1, "Stick");
+                    hero.Inventory[0] = new Weapon(2, 15, 5, "Stick");
 
                     hero2.HeroCondition();
+
+                    List<Hero> heroes = new List<Hero>();
+                    heroes.Add(hero);
+                    heroes.Add(hero2);
+
+                    List<Hero> enemy = new List<Hero>()
+                    {
+                        new Hero()
+                        {
+                            Durability = 5,
+                            IsLife = true,
+                            Name = "Ogr",
+                            Life = 10,
+                            Inventory = new Weapon[]{new Weapon(1, 5, 1, "Arm") }
+                
+                        },
+                        new Hero()
+                        {
+                            Durability = 5,
+                            IsLife = true,
+                            Name = "Ogr",
+                            Life = 10,
+                            Inventory = new Weapon[]{new Weapon(1, 5, 1, "Arm") }
+
+                        }
+                    };
+
+
+                    Battle battle = new Battle(heroes, enemy);
+
+                    //warunke co robic jak wygralez lub przegrales zwracany z klasy bitwa
+                    
                 }
                 else
                 {

@@ -28,7 +28,7 @@ namespace FirstFantazy.Player
             Durability = 200;
             IsLife = true;
             LevelEnd = true;
-            Inventory = new object[5];
+            Inventory = new object[] { new Weapon.Weapon(1, 5, 1, "Stick") };
             backPack = new Dictionary<string, List<object>>();
         } 
 
