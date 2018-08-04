@@ -12,14 +12,7 @@ namespace FirstFantazy.Player
             get { return name; }
             set { name = "Warrior " + value; }
         }
-
-        private object item;
-        public object Item
-        {
-            get { return item; }
-            set { ActiveItem(value); }
-        }
-
+   
         public int Life { get; set; }
         public int Durability { get; set; }
         public bool IsLife { get; set; }
@@ -58,16 +51,6 @@ namespace FirstFantazy.Player
             {
                 Life--;
             } 
-        }
-
-        private void ActiveItem(object newItem)
-        {
-            if(newItem is Stick)
-            {
-                backPack["Stick"] = new List<object>();
-                backPack["Stick"].Add(newItem);
-            }
-            throw new NotImplementedException();
         }
 
         public void HeroCondition()

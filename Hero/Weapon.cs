@@ -4,21 +4,23 @@ using System.Text;
 
 namespace FirstFantazy.Player.Weapon
 {
-    public class Stick
+    public class Weapon
     {
         public int Range { get; set; }
         public int Hardness { get; set; }
         public int Damage { get; set; }
+        public string WeponName { get; set; }
 
         public bool active;
         public List<string> MagicProperties;
 
-        public Stick(int range, int hardness, int damage, List<string> magicP = null)
+        public Weapon(int range, int hardness, int damage, string weaponName, List<string> magicP = null)
         {
             Range = range;
             Hardness = hardness;
             Damage = damage;
             MagicProperties = magicP;
+            WeponName = weaponName;
         }
     }
 }

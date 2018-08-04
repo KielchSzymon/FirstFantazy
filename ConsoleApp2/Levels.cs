@@ -128,7 +128,8 @@ namespace FirstFantazy.Levels
                 if(hero.HeroDirection("Wybierz drogę (1) lub (2)") == 1)
                 {
                     Console.WriteLine( "Spotykasz bohatera numer 2, który rzuca ci kij z ostrzeżeniem uwaga nadchodzą!");
-                    hero.Item = new Stick(2, 15, 1);
+                   
+                    hero.Inventory[0] = new Weapon(2, 15, 1, "Stick");
 
                     hero2.HeroCondition();
                 }
