@@ -1,6 +1,8 @@
 ﻿using FirstFantazy.Player;
 using System;
 using FirstFantazy.Levels;
+using FirstFantazy; 
+using System.Collections.Generic; 
 
 namespace ConsoleApp2
 {
@@ -11,15 +13,25 @@ namespace ConsoleApp2
             string name;
             int difficulty, difficultyDurability = 0;
 
+            MyMethods myMethods = new MyMethods();
+
             Console.Title = "FirstFantazy";
 
             Console.Write("Give your hero name: ");
             name = Console.ReadLine();
 
+            #region GameDifficulty
+
             do
             {
+                Console.WriteLine("                         ***");
+                Console.WriteLine();
                 Console.WriteLine("Select diffculty level: Low = [0] Normal = [1] Hard = [2]");
-                difficulty = Convert.ToInt16(Console.ReadLine());
+                Console.WriteLine();
+                Console.WriteLine("                         ***");
+
+                difficulty = Convert.ToInt16(myMethods.DownloadingData());
+                Console.WriteLine();
 
                 if (difficulty == 0)
                 {
@@ -46,15 +58,21 @@ namespace ConsoleApp2
 
             } while (true);
 
+            #endregion GameDifficulty
+
+            #region PlayerAndLevelCreation
+
             Hero myHero = new Hero(name, difficulty, difficultyDurability);
 
             Hero myHero2 = new Hero();
 
             Levels myLevels = new Levels();
 
-            #region levels
+            #endregion PlayerAndLevelCreation
 
-          // myHero = myLevels.LoadLevel1(myHero);
+            #region Levels
+
+            //myHero = myLevels.LoadLevel1(myHero);
 
             if (myHero.IsLife == true)
             {
@@ -62,7 +80,11 @@ namespace ConsoleApp2
             }
             if (myHero.IsLife == true)
             {
-                myHero = myLevels.LoadLevel3(myHero,myHero2);
+                myHero = myLevels.LoadLevel3(myHero, myHero2);
+            }
+            if (myHero.IsLife == true)
+            {
+                Console.WriteLine("Level3");
             }
             else
             {
@@ -71,7 +93,7 @@ namespace ConsoleApp2
                 Console.WriteLine("Press any key to continue...");
             }
 
-            #endregion
+            #endregion Levels
 
             Console.ReadKey();
         }

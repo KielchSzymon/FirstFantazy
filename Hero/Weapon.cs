@@ -6,6 +6,8 @@ namespace FirstFantazy.Player.Weapon
 {
     public class Weapon
     {
+        #region ClassBoxes
+
         public int Range { get; set; }
         public int Hardness { get; set; }
         public int Damage { get; set; }
@@ -13,6 +15,10 @@ namespace FirstFantazy.Player.Weapon
 
         public bool active;
         public List<string> MagicProperties;
+
+        #endregion ClassBoxes
+
+        #region Constructors
 
         public Weapon(int range, int hardness, int damage, string weaponName, List<string> magicP = null)
         {
@@ -22,5 +28,8 @@ namespace FirstFantazy.Player.Weapon
             MagicProperties = magicP;
             WeponName = weaponName;
         }
+
+        #endregion Constructors
+
     }
 }
