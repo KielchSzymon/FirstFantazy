@@ -84,7 +84,7 @@ namespace ConsoleApp2
             }
             if (myHero.IsLife == true)
             {
-                Console.WriteLine("Level3");
+                myHero = myLevels.LoadLevel4(myHero, myHero2);
             }
             else
             {

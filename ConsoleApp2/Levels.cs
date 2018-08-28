@@ -83,7 +83,7 @@ namespace FirstFantazy.Levels
             TheBeginningOfTheLevel("2");
 
             hero.HeroCondition();
-
+                
             #region BodyLevel
 
             Console.WriteLine("Pochodznia oświetla nikłym blaskiem mroki kolejnej jaskini, " +
@@ -197,6 +197,13 @@ namespace FirstFantazy.Levels
 
             #endregion BodyLevel
 
+        }
+
+        public Hero LoadLevel4(Hero hero, Hero hero2)
+        {
+            TheBeginningOfTheLevel("4");
+
+            return hero;
         }
 
         public void TheBeginningOfTheLevel(string levelNumber)
