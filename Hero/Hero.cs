@@ -25,7 +25,7 @@ namespace FirstFantazy.Player
 
         public Dictionary<string, List<object>> backPack;
 
-        #endregion
+        #endregion ClassBoxes
 
         #region Constructors
 

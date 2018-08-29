@@ -173,17 +173,7 @@ namespace FirstFantazy.Levels
 
 
                     Battle battle = new Battle(heroes, enemy);
-
-                    if (battle.heroWin)
-                    {
-                        hero.IsLife = true;
-                    }
-                    else
-                    {
-                        hero.IsLife = false;
-                    }
                     //warunke co robic jak wygrales lub przegrales zwracany z klasy bitwa
-
                 }
                 else
                 {

@@ -9,15 +9,19 @@ namespace FirstFantazy
 {
     public class Battle
     {
-        public bool heroWin = false;
+
+        #region ClassBoxes
 
         bool mainHeroLive = true;
+
+        #endregion ClassBoxes
 
         public Battle(List<Hero> heroes, List<Hero> enemies)
         {
             int select, j = 0, i = 0;
 
             Random randomAttack = new Random();
+            MyMethods myMethods = new MyMethods();
 
             Console.WriteLine("Bitwa!!!");
             Console.WriteLine();
@@ -29,23 +33,28 @@ namespace FirstFantazy
             {
                 #region HeroesAttack
 
+                #region PresentationOfHero
+
                 Console.ForegroundColor = ConsoleColor.Green;
 
                 j = randomAttack.Next(0, 2);
 
-                Weapon weapon = heroes[j].Inventory[0] as Weapon;
+                Weapon weapon = heroes[j].Inventory[0] as Weapon; // nie rozumiem
 
                 Console.WriteLine();
                 Console.WriteLine("Atak bohatera!");
                 Console.WriteLine();
-                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("==================================================================");
                 Console.WriteLine($"Kolej gracza [{heroes[j].Name}]");
                 Console.WriteLine($"Używa broni [{ weapon.WeponName}]");
                 Console.WriteLine($"O wytrzymałości [{ weapon.Hardness}]");
                 Console.WriteLine($"Zadającej obrażenia na poziomie [{weapon.Damage}].");
-                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("==================================================================");
                 Console.WriteLine();
 
+                #endregion PresentationOfHero
+
+                i = 0;
 
                 #region PresentationOfEnemies
 
@@ -64,11 +73,9 @@ namespace FirstFantazy
                     Console.WriteLine();
                 }
 
-                i = 0; 
-
                 #endregion PresentationOfEnemies
 
-                MyMethods myMethods = new MyMethods();
+                //i = 0;
 
                 if (j == 1)
                 {
@@ -81,7 +88,9 @@ namespace FirstFantazy
 
                 Hero enemy = enemies[select];
 
-                if (weapon.WeponName == "Stick")// Problem z warunkiem, powiniec być uniwersalny, jeżeli nie ma broni to...
+                #region WeaponAttack
+
+                if (weapon.WeponName == "Stick")// Problem z warunkiem, powinien być uniwersalny, jeżeli nie ma broni to...
                 {
                     if (enemy.Durability < weapon.Hardness)
                     {
@@ -114,12 +123,12 @@ namespace FirstFantazy
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Twoja broń nie czyni krzywdy przeciwnikowi, za to traci 1 punkt wytrzymałości.");
+                        Console.WriteLine("Broń nie czyni krzywdy przeciwnikowi, za to traci 1 punkt wytrzymałości.");
                         Console.WriteLine();
 
                         weapon.Hardness--;
 
-                        Console.WriteLine($"Po stracie punktu twoja broń ma wytrzymałość: {weapon.Hardness}");
+                        Console.WriteLine($"Po stracie punktu broń ma wytrzymałość: {weapon.Hardness}");
 
                         if (weapon.Hardness <= 0)
                         {
@@ -127,7 +136,6 @@ namespace FirstFantazy
                             Console.WriteLine("Twoja broń {0}, uległa zniszczeniu!", weapon.WeponName);
                         }
 
-                        Console.WriteLine(weapon.Hardness);
                         //jak wytrzymalosc broni spada ponizej zera usun bron
                     }
                 }
@@ -138,6 +146,7 @@ namespace FirstFantazy
                     Console.WriteLine();
                 }
 
+                #endregion WeaponAttack
 
                 if (!enemy.IsLife)
                 {
@@ -150,130 +159,128 @@ namespace FirstFantazy
 
                 #region EnemiesAttack         
 
-                i = randomAttack.Next(0, 2);
-
-                Console.WriteLine("Atakuje losowo przeciwnik " + enemies[i].Name);
-
-                j = randomAttack.Next(0, 2);
-
-                Console.WriteLine("Atkuje losowo bohatera " + heroes[j].Name);
-
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                Weapon weaponEn = enemies[i].Inventory[0] as Weapon;
-
-                Console.WriteLine();
-                Console.WriteLine("Atak przeciwnika!");
-
-                Console.WriteLine();
-                Console.WriteLine("------------------------------------------------------------------");
-                Console.WriteLine($"Kolej przeciwnika [{enemies[i].Name}]");
-                Console.WriteLine($"Używa broni [{ weaponEn.WeponName}]");
-                Console.WriteLine($"O wytrzymałości [{ weaponEn.Hardness}]");
-                Console.WriteLine($"Zadającej obrażenia na poziomie [{weaponEn.Damage}].");
-                Console.WriteLine("------------------------------------------------------------------");
-                Console.WriteLine();
-
-                if (weaponEn.WeponName == "Arm")// Problem z warunkiem, powiniec być uniwersalny, jeżeli nie ma broni to...
+                if (enemies.Count > 0)
                 {
-                    if (heroes[j].Durability < weaponEn.Hardness)
+                    i = randomAttack.Next(0, 2);
+
+                    Console.WriteLine("Atakuje losowo przeciwnik " + enemies[i].Name);
+
+                    j = randomAttack.Next(0, 2);
+
+                    Console.WriteLine("Atkuje losowo bohatera " + heroes[j].Name);
+
+                    #region PresentationOfEnemies
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Weapon weaponEn = enemies[i].Inventory[0] as Weapon;
+
+                    Console.WriteLine();
+                    Console.WriteLine("Atak przeciwnika!");
+
+                    Console.WriteLine();
+                    Console.WriteLine("------------------------------------------------------------------");
+                    Console.WriteLine($"Kolej przeciwnika [{enemies[i].Name}]");
+                    Console.WriteLine($"Używa broni [{ weaponEn.WeponName}]");
+                    Console.WriteLine($"O wytrzymałości [{ weaponEn.Hardness}]");
+                    Console.WriteLine($"Zadającej obrażenia na poziomie [{weaponEn.Damage}].");
+                    Console.WriteLine("------------------------------------------------------------------");
+                    Console.WriteLine();
+
+                    #endregion PresentationOfEnemies
+
+                    #region WeaponAttack
+
+                    if (weaponEn.WeponName == "Arm")// Problem z warunkiem, powiniec być uniwersalny, jeżeli nie ma broni to...
                     {
-                        heroes[j].Durability -= weaponEn.Damage;
-
-                        Console.WriteLine();
-                        Console.WriteLine($"Broń przeciwnika zadaje [{weaponEn.Damage}] obrażeń.");
-                        Console.WriteLine();
-
-                        Console.WriteLine();
-                        Console.WriteLine($"Stan bohatera: {heroes[j].Name} ");
-                        Console.WriteLine($"Życie: {heroes[j].Life}");
-                        Console.WriteLine($"Wytrzymałość: {heroes[j].Durability}");
-                        Console.WriteLine("");
-                        Console.WriteLine();
-
-                        Console.WriteLine();
-
-                        if (heroes[j].Durability == 0)
+                        if (heroes[j].Durability < weaponEn.Hardness)
                         {
-                            heroes[j].Life -= weaponEn.Damage;
+                            heroes[j].Durability -= weaponEn.Damage;
+
+                            Console.WriteLine();
+                            Console.WriteLine($"Broń przeciwnika zadaje [{weaponEn.Damage}] obrażeń.");
+                            Console.WriteLine();
+
+                            Console.WriteLine();
+                            Console.WriteLine($"Stan bohatera: {heroes[j].Name} ");
+                            Console.WriteLine($"Życie: {heroes[j].Life}");
+                            Console.WriteLine($"Wytrzymałość: {heroes[j].Durability}");
+                            Console.WriteLine("");
+                            Console.WriteLine();
+
+                            Console.WriteLine();
+
+                            if (heroes[j].Durability == 0)
+                            {
+                                heroes[j].Life -= weaponEn.Damage;
+                            }
+
+                            if (heroes[j].Life <= 0)
+                            {
+                                Console.WriteLine($"Bohater: {heroes[j].Name} został pokonany");
+                                heroes[j].IsLife = false;
+                            }
                         }
-
-                        if (heroes[j].Life <= 0)
+                        else
                         {
-                        Console.WriteLine($"Bohater: {heroes[j].Name} został pokonany");
-                        heroes[j].IsLife = false;
+                            Console.WriteLine();
+                            Console.WriteLine("Broń przeciwnika nie czyni krzywdy bohaterowi, za to traci 1 punkt wytrzymałości.");
+                            Console.WriteLine();
+
+                            weaponEn.Hardness--;
+
+                            Console.WriteLine($"Po stracie punktu broń ma wytrzymałość: {weaponEn.Hardness}");
+                            Console.WriteLine();
+
+                            if (weaponEn.Hardness <= 0)
+                            {
+                                enemies[i].Inventory[0] = null;
+                                Console.WriteLine("Broń {0}, uległa zniszczeniu!", weaponEn.WeponName);
+                            }
+
+                            //jak wytrzymalosc broni spada ponizej zera usun bron
                         }
                     }
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Broń przeciwnika nie czyni krzywdy bohaterowi, za to traci 1 punkt wytrzymałości.");
+                        Console.WriteLine("Przeciwnik nie posiada żadnej broni, nie może atakowac! Atakuje ten kto ma broń");
                         Console.WriteLine();
-
-                        weaponEn.Hardness--;
-
-                        Console.WriteLine($"Po stracie punktu broń ma wytrzymałość: {weaponEn.Hardness}");
-                        Console.WriteLine();
-
-                        if (weaponEn.Hardness <= 0)
-                        {
-                            enemies[i].Inventory[0] = null;
-                            Console.WriteLine("Broń {0}, uległa zniszczeniu!", weaponEn.WeponName);
-                        }
-
-                        //jak wytrzymalosc broni spada ponizej zera usun bron
                     }
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Przeciwnik nie posiada żadnej broni, nie może atakowac! Atakuje ten kto ma broń");
-                    Console.WriteLine();
-                }
 
-                if (!heroes[j].IsLife)
-                {
-                    //heroes.Remove(heroes[j]);
+                    #endregion WeaponAttack
 
-                    if (heroes[j] == heroes[0])
+                    if (!heroes[j].IsLife)
                     {
-                        mainHeroLive = false;
+                        //heroes.Remove(heroes[j]);
+
+                        if (heroes[j] == heroes[0])
+                        {
+                            mainHeroLive = false;
+                        }
                     }
+
+                    //i = 0;
+                    Console.ResetColor();
                 }
-
-                i = 0;
-
-                Console.ResetColor();
-
+                
                 #endregion EnemiesAttack
-
 
                 //dodaj ataki przeciwnikow
                 //a tutaj jak maja atakowac po pierwszym graczu
 
-                if (j < 1)
-                {
-                    //a tutaj jak maja atakowac na zmiane
-                    j++;
-                }
-                else
-                {
-                    //tu moze byc przykladowo etap ataku przecinikow jak maja atakowac po graczach
-                    j = 0;
-                }
+                //if (j < 1)
+                //{
+                //    //a tutaj jak maja atakowac na zmiane
+                //    j++;
+                //}
+                //else
+                //{
+                //    //tu moze byc przykladowo etap ataku przecinikow jak maja atakowac po graczach
+                //    j = 0;
+                //}
 
             } while (enemies.Count > 0 && mainHeroLive);
-
-            if (enemies.Count > 0)
-            {
-                heroWin = true;
-                Console.WriteLine("Zyciężyłeś w Bitwie");
-            }
-            else
-            {
-                heroWin = false;
-                Console.WriteLine("Zginąłeś w Bitwie!");
-            }
 
         }
     }
