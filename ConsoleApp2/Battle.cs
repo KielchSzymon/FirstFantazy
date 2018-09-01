@@ -16,6 +16,8 @@ namespace FirstFantazy
 
         #endregion ClassBoxes
 
+        #region Methods
+
         public Battle(List<Hero> heroes, List<Hero> enemies)
         {
             int select, j = 0, i = 0;
@@ -54,13 +56,13 @@ namespace FirstFantazy
 
                 #endregion PresentationOfHero
 
-                i = 0;
+                //i = 0;
 
                 #region PresentationOfEnemies
 
                 foreach (Hero hero in enemies)
                 {
-                    Console.WriteLine(enemies[i].Name + " atakuj - " + i);
+                    Console.WriteLine(enemies[i].Name + " atakuj - " + i); // przy losowaniu wyrzuca wyjście poza rozmiar tablicy
 
                     Console.WriteLine();
                     Console.WriteLine($"Stan wroga: {enemies[i].Name} ");
@@ -79,7 +81,11 @@ namespace FirstFantazy
 
                 if (j == 1)
                 {
-                    select = randomAttack.Next(0, 2);
+                    select = randomAttack.Next(0, 2); //???
+
+                    Console.WriteLine();
+                    Console.WriteLine($"Losowo wybrany bohater {heroes[j].Name}, atkuje losowo wybranego przeciwnika {enemies[select].Name}");
+                    Console.WriteLine();
                 }
                 else
                 {
@@ -281,8 +287,9 @@ namespace FirstFantazy
                 //}
 
             } while (enemies.Count > 0 && mainHeroLive);
-
         }
+
+        #endregion Methods
     }
-    
+
 }

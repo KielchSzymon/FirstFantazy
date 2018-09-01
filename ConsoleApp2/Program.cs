@@ -84,7 +84,7 @@ namespace ConsoleApp2
             }
             if (myHero.IsLife == true)
             {
-                myHero = myLevels.LoadLevel4(myHero, myHero2);
+                myHero = myLevels.LoadLevel4(myHero, myHero2); // Nie wiem, czy to jest dobrze zrobione?
             }
             else
             {
