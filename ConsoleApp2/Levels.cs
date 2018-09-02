@@ -173,6 +173,7 @@ namespace FirstFantazy.Levels
 
 
                     Battle battle = new Battle(heroes, enemy);
+                    heroes = battle.Initialize();
                     //warunke co robic jak wygrales lub przegrales zwracany z klasy bitwa
                 }
                 else
