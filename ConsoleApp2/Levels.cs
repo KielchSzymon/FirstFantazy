@@ -1,18 +1,21 @@
-﻿using FirstFantazy.Player;
-using FirstFantazy.Player.Weapon;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FirstFantazyGameObject;
+using FirstFantazyStoryText;
+using FirstFantazyBattle;
+
+using FirstFantazyHero;
+using FirstFantazyHeroWeapon;
 
 
 
-namespace FirstFantazy.Levels
+
+namespace FirstFantazyLevels
 {
     public  class Levels
     {
-
-        #region Methods
-
         public Hero LoadLevel1(Hero hero)
         {
 
@@ -20,7 +23,7 @@ namespace FirstFantazy.Levels
 
             TheBeginningOfTheLevel("1");
 
-            hero.HeroCondition();
+            StoryText.HeroCondition(hero);
 
             #region BodyLevel
 
@@ -82,7 +85,7 @@ namespace FirstFantazy.Levels
 
             TheBeginningOfTheLevel("2");
 
-            hero.HeroCondition();
+            StoryText.HeroCondition(hero);
                 
             #region BodyLevel
 
@@ -124,8 +127,8 @@ namespace FirstFantazy.Levels
         {
 
             TheBeginningOfTheLevel("3");
-        
-            hero.HeroCondition();
+
+            StoryText.HeroCondition(hero);
 
             #region BodyLevel
 
@@ -138,7 +141,7 @@ namespace FirstFantazy.Levels
 
                     hero.Inventory[0] = new Weapon(2, 15, 5, "Stick");
 
-                    hero2.HeroCondition();
+                    StoryText.HeroCondition(hero2);
 
                     #region CreatingHeroesAndEnemies
 
@@ -151,6 +154,7 @@ namespace FirstFantazy.Levels
                     {
                         new Hero()
                         {
+                            HeroID = 3,
                             Durability = 10,
                             IsLife = true,
                             Name = "Ogr 1",
@@ -160,6 +164,7 @@ namespace FirstFantazy.Levels
                         },
                         new Hero()
                         {
+                            HeroID = 4,
                             Durability = 10,
                             IsLife = true,
                             Name = "Ogr 2",
@@ -175,6 +180,12 @@ namespace FirstFantazy.Levels
                     Battle battle = new Battle(heroes, enemy);
                     heroes = battle.Initialize();
                     //warunke co robic jak wygrales lub przegrales zwracany z klasy bitwa
+                    if (hero.IsLife)
+                    {
+                        hero.LevelEnd = true;
+                        Console.WriteLine("Zwycięstwo!");
+                        Console.ReadKey();
+                    }
                 }
                 else
                 {
@@ -182,6 +193,7 @@ namespace FirstFantazy.Levels
                     Console.WriteLine("Atakuje cię nieznany zwierz i giniesz!");
                     hero.IsLife = false;
                 }
+
             } while (hero.IsLife && !hero.LevelEnd);
 
             return hero;
@@ -192,10 +204,42 @@ namespace FirstFantazy.Levels
 
         public Hero LoadLevel4(Hero hero, Hero hero2)
         {
+            GameObjeckt gameObjeckt = new GameObjeckt();
+
             TheBeginningOfTheLevel("4");
+            StoryText.HeroCondition(hero);
+            StoryText.HeroCondition(hero2);
+
+            Console.WriteLine("Bitwa wygrana, ocaliliście życie. Teraz trzeba obszukać wrogów, zobaczyć czy nie mają czegoś cennego.");
+            Console.WriteLine("A potem ukryć się czym prędzej, znaleźdż jakieś miejsce na odpoczynek.");
+            Console.WriteLine();
+            Console.WriteLine("Znajdujecie miejsce na odpoczynek, rozpalacie ognisko, to pozwala zregenerować wytrzymałoś." +
+                " Niestety przy wrogach nic nie było.");
+            Console.WriteLine();
+
+            Console.WriteLine("Ukrywacie się w pobliskiej rozpadlinie skalnej, u podnóża gory. Rozpalacie ognisko.");
+            Console.WriteLine("Odzyskujecie utraconą wytrzymałość, każyd z was po 10 puktów");
+            Console.WriteLine();
+
+            gameObjeckt.Campfire(10, hero);
+            gameObjeckt.Campfire(10, hero2);
+
+            StoryText.HeroCondition(hero);
+            StoryText.HeroCondition(hero2);
+
+            Console.WriteLine("Rozpadlina skalna, w której się ukryliście okazuje się grobem kilkunastu rycerzy, z uzbrojenia, " +
+                " które tam odnaleźliście bierzecie po mieczu.");
+
+            hero.Inventory[1] = new Weapon(5, 20, 10, "Sword");
+            hero2.Inventory[1] = new Weapon(5, 20, 10, "Sword");
+
+            StoryText.HeroCondition(hero);
+            StoryText.HeroCondition(hero2);
 
             return hero;
         }
+
+
 
         public void TheBeginningOfTheLevel(string levelNumber)
         {
@@ -207,8 +251,5 @@ namespace FirstFantazy.Levels
             Console.WriteLine();
 
         }
-
-        #endregion Methods
-
     }
 }

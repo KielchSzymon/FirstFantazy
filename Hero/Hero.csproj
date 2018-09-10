@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Player</AssemblyName>
-    <RootNamespace>FirstFantazy.Player</RootNamespace>
+    <AssemblyName></AssemblyName>
+    <RootNamespace>FirstFantazyHero</RootNamespace>
   </PropertyGroup>
 
 </Project>

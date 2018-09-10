@@ -1,10 +1,12 @@
-﻿using FirstFantazy.Player;
+﻿
 using System;
-using FirstFantazy.Levels;
-using FirstFantazy; 
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using FirstFantazyLevels;
+using FirstFantazyStoryText;
 
-namespace ConsoleApp2
+using FirstFantazyHero;
+
+namespace FirstFantazyProgram
 {
     class Program
     {
@@ -13,7 +15,6 @@ namespace ConsoleApp2
             string name;
             int difficulty, difficultyDurability = 0;
 
-            MyMethods myMethods = new MyMethods();
 
             Console.Title = "FirstFantazy";
 
@@ -26,26 +27,26 @@ namespace ConsoleApp2
             {
                 Console.WriteLine("                         ***");
                 Console.WriteLine();
-                Console.WriteLine("Select diffculty level: Low = [0] Normal = [1] Hard = [2]");
+                Console.WriteLine("Select diffculty level: Low = [1] Normal = [2] Hard = [3]");
                 Console.WriteLine();
                 Console.WriteLine("                         ***");
 
-                difficulty = Convert.ToInt16(myMethods.DownloadingData());
+                difficulty = Convert.ToInt16(StoryText.DownloadingData());
                 Console.WriteLine();
 
-                if (difficulty == 0)
+                if (difficulty == 1)
                 {
                     difficulty = 3;
                     difficultyDurability = 10;
                     break;
                 }
-                if (difficulty == 1)
+                if (difficulty == 2)
                 {
                     difficulty = 2;
                     difficultyDurability = 5;
                     break;
                 }
-                if (difficulty == 2)
+                if (difficulty == 3)
                 {
                     difficulty = 1;
                     difficultyDurability = 2;
@@ -60,15 +61,11 @@ namespace ConsoleApp2
 
             #endregion GameDifficulty
 
-            #region PlayerAndLevelCreation
-
-            Hero myHero = new Hero(name, difficulty, difficultyDurability);
+            Hero myHero = new Hero(name, difficulty, difficultyDurability, 1);
 
             Hero myHero2 = new Hero();
 
             Levels myLevels = new Levels();
-
-            #endregion PlayerAndLevelCreation
 
             #region Levels
 
@@ -80,7 +77,7 @@ namespace ConsoleApp2
             }
             if (myHero.IsLife == true)
             {
-                myHero = myLevels.LoadLevel3(myHero, myHero2);
+               // myHero = myLevels.LoadLevel3(myHero, myHero2);
             }
             if (myHero.IsLife == true)
             {
@@ -88,9 +85,7 @@ namespace ConsoleApp2
             }
             else
             {
-                Console.WriteLine();
-                Console.WriteLine("End of the game.");
-                Console.WriteLine("Press any key to continue...");
+                StoryText.EndOfTheGame();
             }
 
             #endregion Levels

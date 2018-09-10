@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FirstFantazy.Player
+using FirstFantazyHeroWeapon;
+
+namespace FirstFantazyHero
 {
     public class Hero
     {
-        #region ClassBoxes
-
-
         private string name;
 
         public string Name
         {
             get { return name; }
-            set { name = "Warrior " + value; }
+            set { name = "." + value; }
         }
 
         public int Life { get; set; }
@@ -25,24 +24,26 @@ namespace FirstFantazy.Player
 
         public Dictionary<string, List<object>> backPack;
 
-        #endregion ClassBoxes
+        public int HeroID;
 
-        #region Constructors
 
         public Hero()
         {
+            HeroID = 2;
             Name = "Edgar";
             Life = 2;
             Durability = 10;
             IsLife = true;
             LevelEnd = true;
-            Inventory = new object[] { new Weapon.Weapon(1, 5, 1, "Stick")};
+            Inventory = new object[5];
+            Inventory[0] = new Weapon(1, 5, 1, "Stick");
             backPack = new Dictionary<string, List<object>>(); 
         }  
 
-        public Hero(string Name, int life, int durability)
+        public Hero(string Name, int life, int durability, int heroID)
         {
-           this.Name = Name;
+            HeroID = heroID;
+            this.Name = Name;
             Life = life;
             Durability = durability;
             IsLife = true;
@@ -52,10 +53,6 @@ namespace FirstFantazy.Player
             Inventory = new object[5];
         }
 
-        #endregion Constructors
-
-        #region Methods
-
         public void HurtHero()
         {
             Durability--;
@@ -64,14 +61,24 @@ namespace FirstFantazy.Player
                 Life--;
             } 
         }
-
-        public void HeroCondition()
+        
+        public void HeroDurabilityDownUp(int durabilityDawnUp, int j)
         {
-            Console.WriteLine();
-            Console.WriteLine("------------------------------------------------------------");
-            Console.WriteLine("hero condition:\nName : [{0}]  Life  [{1}]  Durability [{2}]", Name, Life, Durability);
-            Console.WriteLine("------------------------------------------------------------");
-            Console.WriteLine();
+            if (j==0)
+            {
+                for (int i = 0; i < durabilityDawnUp; i++)
+                {
+                    Durability--;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < durabilityDawnUp; i++)
+                {
+                    Durability++;
+                }
+            }
+            
         }
 
         public int HeroDirection(string messageForThePlayer)
@@ -81,13 +88,12 @@ namespace FirstFantazy.Player
             Console.WriteLine();
             Console.WriteLine(messageForThePlayer);
             Console.WriteLine();
-
+            Console.Write(">> ");
             direction = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine();
 
             return direction;
         }
 
-        #endregion Methods
     }
 }
