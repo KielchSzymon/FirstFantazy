@@ -5,6 +5,7 @@ using FirstFantazyLevels;
 using FirstFantazyStoryText;
 
 using FirstFantazyHero;
+using FirstFantazy.Scene;
 
 namespace FirstFantazyProgram
 {
@@ -15,6 +16,9 @@ namespace FirstFantazyProgram
             string name;
             int difficulty, difficultyDurability = 0;
 
+ 
+
+            CreateScene.LoadGameWindow();
 
             Console.Title = "FirstFantazy";
 
@@ -69,7 +73,7 @@ namespace FirstFantazyProgram
 
             #region Levels
 
-            //myHero = myLevels.LoadLevel1(myHero);
+            myHero = myLevels.LoadLevel1(myHero);
 
             if (myHero.IsLife == true)
             {
@@ -81,7 +85,7 @@ namespace FirstFantazyProgram
             }
             if (myHero.IsLife == true)
             {
-                myHero = myLevels.LoadLevel4(myHero, myHero2); // Nie wiem, czy to jest dobrze zrobione?
+               // myHero = myLevels.LoadLevel4(myHero, myHero2); // Nie wiem, czy to jest dobrze zrobione?
             }
             else
             {
