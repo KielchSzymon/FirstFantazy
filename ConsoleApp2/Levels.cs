@@ -210,6 +210,8 @@ namespace FirstFantazyLevels
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
 
+            StoryText.SelectWayDisplayDelay(1);  
+
             Console.WriteLine("Bitwa wygrana, ocaliliście życie. Teraz trzeba obszukać wrogów, zobaczyć czy nie mają czegoś cennego.");
             Console.WriteLine("A potem ukryć się czym prędzej, znaleźdż jakieś miejsce na odpoczynek.");
             Console.WriteLine();
@@ -221,8 +223,8 @@ namespace FirstFantazyLevels
             Console.WriteLine("Odzyskujecie utraconą wytrzymałość, każyd z was po 10 puktów");
             Console.WriteLine();
 
-            gameObjeckt.Campfire(10, hero);
-            gameObjeckt.Campfire(10, hero2);
+            gameObjeckt.Health(10, hero);
+            gameObjeckt.Health(10, hero2);
 
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
@@ -233,8 +235,12 @@ namespace FirstFantazyLevels
             hero.Inventory[1] = new Weapon(5, 20, 10, "Sword");
             hero2.Inventory[1] = new Weapon(5, 20, 10, "Sword");
 
+            StoryText.SelectWayDisplayDelay(1);  
+
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
+
+
 
             return hero;
         }
