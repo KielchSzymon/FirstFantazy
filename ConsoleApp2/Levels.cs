@@ -8,9 +8,8 @@ using FirstFantazyBattle;
 
 using FirstFantazyHero;
 using FirstFantazyHeroWeapon;
-
-
-
+using FirstFantazyStoryText.Story;
+using FirstFantazy.Scene;
 
 namespace FirstFantazyLevels
 {
@@ -20,6 +19,8 @@ namespace FirstFantazyLevels
         {
 
             int direction;
+
+            CreateScene.LoadScene("Level1");
 
             TheBeginningOfTheLevel("1");
 
@@ -210,6 +211,10 @@ namespace FirstFantazyLevels
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
 
+            //Level1Story.first();
+
+            //Level1Story.HeroCondition(hero);
+
             StoryText.SelectWayDisplayDelay(1);  
 
             Console.WriteLine("Bitwa wygrana, ocaliliście życie. Teraz trzeba obszukać wrogów, zobaczyć czy nie mają czegoś cennego.");
@@ -252,7 +257,7 @@ namespace FirstFantazyLevels
             string levelNumberText = levelNumber;
 
             Console.Title = "FirstFantazy Level" + levelNumberText;
-            Console.Clear();
+           // Console.Clear();
             Console.WriteLine("Level{0}", levelNumberText);
             Console.WriteLine();
 

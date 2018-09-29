@@ -11,9 +11,9 @@ using FirstFantazyHeroWeapon;
 
 namespace FirstFantazyStoryText
 {
-    public static class StoryText
+    public class StoryText
     {
-        const int i = 0;
+        private const int i = 0;
 
         public static void SelectWayDisplayDelay(int i)
         {
