@@ -201,11 +201,15 @@ namespace FirstFantazy_Graphic_Game_Objects
 
             WriteLineSetCursorPosition(cursorX+1, cursorY, "__");
             WriteLineSetCursorPosition(cursorX, cursorY + 1, "[  ]");
+
             cursorY = DrawBlade(cursorX, cursorY+2, 18);
+
             WriteLineSetCursorPosition(cursorX, cursorY, "[  ]");
             WriteLineSetCursorPosition(cursorX+1, cursorY, "__");
+
             endCursorPositionX = cursorX - 1;
             endCursorPositionY = cursorY;
+
             WriteLineSetCursorPosition(cursorX-1, cursorY-5, "[");
             WriteLineSetCursorPosition(cursorX + 4, cursorY - 12, "]");
             WriteLineSetCursorPosition(cursorX + 3, cursorY - 3, "]");

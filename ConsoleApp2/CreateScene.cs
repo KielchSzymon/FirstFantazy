@@ -45,12 +45,12 @@ namespace FirstFantazy_Scene
         private static void LoadIntroScene()
         {
             Console.Clear();
-            //Console.SetCursorPosition(0,0);
+            Console.SetCursorPosition(0, 0);
             //GraphicGameObjects.DrawIntro();
-            //GraphicGameObjects.DrawSword(5,0);
-            //GraphicGameObjects.DrawTorch(20,0);
+            //GraphicGameObjects.DrawSword(5, 0);
+            GraphicGameObjects.DrawTorch(20, 0);
             //GraphicGameObjects.DrawStick(20, 0);
-            GraphicGameObjects.DrawEnterVer2(0,0,5,5,"1");
+            //GraphicGameObjects.DrawEnterVer2(0,0,5,5,"1");
             StoryText.SelectWayDisplayDelay(0);
             Console.Clear();
         }

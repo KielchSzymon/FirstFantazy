@@ -7,8 +7,11 @@ using FirstFantazy_Hero;
 
 namespace FirstFantazy_StoryText_Story_Level
 {
+    //create new file for every class in this cs
     public class Level1Story : StoryText
     {
+
+        //TODO change the methods name to more description name   
         public static void Text1(Hero hero)
         {
             Console.WriteLine("Budzisz się jedyne co pamiętasz to, że masz na imię {0}", hero.Name);
