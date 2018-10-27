@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Text;
 
-using FirstFantazyHero;
-using FirstFantazyHeroWeapon;
+using FirstFantazy_Hero;
+using FirstFantazy_Hero_Weapon;
 
 
 
-namespace FirstFantazyStoryText
+namespace FirstFantazy_StoryText
 {
     public class StoryText
     {
@@ -24,9 +24,24 @@ namespace FirstFantazyStoryText
                 Console.ReadKey();
                 Console.WriteLine();
             }
+            if (i == 1)
+            {
+                Console.SetCursorPosition(Console.CursorLeft+29,Console.CursorTop);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            }
+            if (i == 2)
+            {
+                Console.SetCursorPosition(Console.CursorLeft + 29, Console.CursorTop);
+                Thread.Sleep(3000);
+            }
+            if (i == 3)
+            {
+                Thread.Sleep(3000);
+            }
             else
             {
-                Thread.Sleep(300);
+                Thread.Sleep(3000);
             }
         }
 

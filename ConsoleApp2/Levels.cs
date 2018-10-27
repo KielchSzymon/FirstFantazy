@@ -2,39 +2,39 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FirstFantazyGameObject;
-using FirstFantazyStoryText;
-using FirstFantazyBattle;
 
-using FirstFantazyHero;
-using FirstFantazyHeroWeapon;
-using FirstFantazyStoryText.Story;
-using FirstFantazy.Scene;
+using FirstFantazy_GameObject;
+using FirstFantazy_Battle;
+using FirstFantazy_Hero;
+using FirstFantazy_Hero_Weapon;
+using FirstFantazy_StoryText;
+using FirstFantazy_StoryText_Story_Level;
+using FirstFantazy_Scene;
 
-namespace FirstFantazyLevels
+namespace FirstFantazy_Levels
 {
-    public  class Levels
+    public class Levels
     {
         public Hero LoadLevel1(Hero hero)
         {
 
             int direction;
 
-            CreateScene.LoadScene("Level1");
+            
 
             TheBeginningOfTheLevel("1");
+
+            CreateScene.LoadScene("Level1"); 
 
             StoryText.HeroCondition(hero);
 
             #region BodyLevel
 
-            Console.WriteLine("Budzisz się jedyne co pamiętasz to, że masz na imię {0}", hero.Name);
-            Console.WriteLine();
+            Level1Story.Text1(hero);
 
             do
             {
-                Console.WriteLine();
-                Console.WriteLine("Przed sobą widzisz dwie ścieżki, idziesz w (1) lewo lub (2) w prawo.");
+                Level1Story.Text2();
 
                 direction = Convert.ToInt16(Console.ReadLine());
 
@@ -42,15 +42,12 @@ namespace FirstFantazyLevels
                 {
                     if (!hero.backPack.ContainsKey("items"))
                     {
-                        Console.WriteLine("Giniesz! Nie widzisz gdzie idziesz i niestety potykasz się wpadając w rospadlinę.");
+                        Level1Story.Text3();
                         hero.IsLife = false;
                     }
                     else if (hero.backPack.ContainsKey("items") && hero.backPack["items"].Contains("torch"))
                     {
-                        Console.WriteLine("Dzięki pochodni udaje Ci się przejść do kolejnej jaskini.");
-                        Console.WriteLine();
-                        Console.WriteLine("Gratulacje, ukończyłeś poziom!");
-                        Console.WriteLine("Press any key to continue...");
+                        Level1Story.Text4();
                         Console.ReadKey();
                         hero.LevelEnd = true;
                     }
@@ -59,13 +56,13 @@ namespace FirstFantazyLevels
                 {
                     if (hero.backPack.Count == 0)
                     {
-                        Console.WriteLine("Zanjdujesz palącą się pochodnię.");
+                        Level1Story.Text5();
                         hero.backPack["items"] = new List<object>();
                         hero.backPack["items"].Add("torch");
                     }
                     else if (hero.backPack.ContainsKey("items") && hero.backPack["items"].Contains("torch"))
                     {
-                        Console.WriteLine("Tu już nic nie ma");
+                        Level1Story.Text6();
                     }
                 }
 
@@ -87,16 +84,13 @@ namespace FirstFantazyLevels
             TheBeginningOfTheLevel("2");
 
             StoryText.HeroCondition(hero);
-                
+
             #region BodyLevel
 
-            Console.WriteLine("Pochodznia oświetla nikłym blaskiem mroki kolejnej jaskini, " +
-                "gdzieś w oddali słychać kapanie wody rozbryzgującej się na skale. " +
-                "Twoja obecność przestraszyła nietoperze, które przeleciały ci nad gową uciekając  w mrok. " +
-                "Przed sobą widzisz dwie drogi: jedna to pułka skalna ciągnąca się wzdłuż ściany jaskini (1), druga to ścieżka podążająca w dół (2).");
+            Level2Story.Text1();
             do
             {
-                if (hero.HeroDirection("Wybierz drogę (1) lub (2): ") == 1)
+                if (Level2Story.Text2(hero) == 1)
                 {
                     Console.WriteLine("Pułka skalna urywa się nagle i z dużą prędkością spadasz w dół, " +
                         "tracisz punkjty wytrzymałości, ale docierasz do wyjści z z jaskiń");
@@ -113,8 +107,7 @@ namespace FirstFantazyLevels
                 }
                 else
                 {
-                    Console.WriteLine("Droga w doł, którą podążasz nagle zapada się i trafiasz do głębokiego dołu, pomimo usilnych starań, " +
-                        "nie potrafisz się wydostać i umierasz z pragnienia i głodu!");
+                    Level2Story.Text3();
                     hero.IsLife = false;
                 }
             } while (hero.IsLife && !hero.LevelEnd);
@@ -135,10 +128,9 @@ namespace FirstFantazyLevels
 
             do
             {
-                if (hero.HeroDirection("Wybierz drogę (1) lub (2)") == 1)
+                if (Level3Story.Text1(hero) == 1)
                 {
-                    Console.WriteLine("Spotykasz bohatera o imieniu {0}, który rzuca ci kij z ostrzeżeniem. 'Uwaga nadchodzą!' ", hero2.Name);
-                    Console.WriteLine();
+                    Level3Story.Text2(hero2);
 
                     hero.Inventory[0] = new Weapon(2, 15, 5, "Stick");
 
@@ -180,18 +172,17 @@ namespace FirstFantazyLevels
 
                     Battle battle = new Battle(heroes, enemy);
                     heroes = battle.Initialize();
-                    //warunke co robic jak wygrales lub przegrales zwracany z klasy bitwa
+                    
                     if (hero.IsLife)
                     {
                         hero.LevelEnd = true;
-                        Console.WriteLine("Zwycięstwo!");
+                        Level3Story.Text3();
                         Console.ReadKey();
                     }
                 }
                 else
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Atakuje cię nieznany zwierz i giniesz!");
+                    Level3Story.Text4();
                     hero.IsLife = false;
                 }
 
@@ -205,37 +196,23 @@ namespace FirstFantazyLevels
 
         public Hero LoadLevel4(Hero hero, Hero hero2)
         {
-            GameObjeckt gameObjeckt = new GameObjeckt();
+            GameObject gameObject = new GameObject();
 
             TheBeginningOfTheLevel("4");
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
 
-            //Level1Story.first();
+            StoryText.SelectWayDisplayDelay(1);
 
-            //Level1Story.HeroCondition(hero);
+            Level4Story.Text1();
 
-            StoryText.SelectWayDisplayDelay(1);  
-
-            Console.WriteLine("Bitwa wygrana, ocaliliście życie. Teraz trzeba obszukać wrogów, zobaczyć czy nie mają czegoś cennego.");
-            Console.WriteLine("A potem ukryć się czym prędzej, znaleźdż jakieś miejsce na odpoczynek.");
-            Console.WriteLine();
-            Console.WriteLine("Znajdujecie miejsce na odpoczynek, rozpalacie ognisko, to pozwala zregenerować wytrzymałoś." +
-                " Niestety przy wrogach nic nie było.");
-            Console.WriteLine();
-
-            Console.WriteLine("Ukrywacie się w pobliskiej rozpadlinie skalnej, u podnóża gory. Rozpalacie ognisko.");
-            Console.WriteLine("Odzyskujecie utraconą wytrzymałość, każyd z was po 10 puktów");
-            Console.WriteLine();
-
-            gameObjeckt.Health(10, hero);
-            gameObjeckt.Health(10, hero2);
+            gameObject.Campfire(10, hero);
+            gameObject.Campfire(10, hero2);
 
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
 
-            Console.WriteLine("Rozpadlina skalna, w której się ukryliście okazuje się grobem kilkunastu rycerzy, z uzbrojenia, " +
-                " które tam odnaleźliście bierzecie po mieczu.");
+            Level4Story.Text2();
 
             hero.Inventory[1] = new Weapon(5, 20, 10, "Sword");
             hero2.Inventory[1] = new Weapon(5, 20, 10, "Sword");
@@ -245,21 +222,23 @@ namespace FirstFantazyLevels
             StoryText.HeroCondition(hero);
             StoryText.HeroCondition(hero2);
 
-
-
             return hero;
         }
-
-
 
         public void TheBeginningOfTheLevel(string levelNumber)
         {
             string levelNumberText = levelNumber;
 
             Console.Title = "FirstFantazy Level" + levelNumberText;
-           // Console.Clear();
+
+            Console.Clear();
+
+            Console.SetCursorPosition(40, 11);
+
             Console.WriteLine("Level{0}", levelNumberText);
             Console.WriteLine();
+
+            StoryText.SelectWayDisplayDelay(2);
 
         }
     }

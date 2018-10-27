@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using FirstFantazyStoryText;
+using FirstFantazy_StoryText;
 
-using FirstFantazyHero;
-using FirstFantazyHeroWeapon;
+using FirstFantazy_Hero;
+using FirstFantazy_Hero_Weapon;
 
 
-namespace FirstFantazyBattle
+namespace FirstFantazy_Battle
 {
     public class Battle
     {

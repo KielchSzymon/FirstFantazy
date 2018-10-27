@@ -1,29 +1,29 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using FirstFantazyLevels;
-using FirstFantazyStoryText;
 
-using FirstFantazyHero;
-using FirstFantazy.Scene;
+using FirstFantazy_StoryText;
+using FirstFantazy_Hero;
+using FirstFantazy_Scene;
+using FirstFantazy_Levels;
 
-namespace FirstFantazyProgram
+namespace FirstFantazy.Program
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string name;
-            int difficulty, difficultyDurability = 0;
+         
+            int difficulty, difficultyDurability;
+            const int BuorX = 88, BuorY = 26;  //bfuer size
+            const int WindowX = 88, WindowY = 26; //window size
 
- 
-
-            CreateScene.LoadGameWindow();
+            CreateScene.LoadGameWindow(0,WindowX,WindowY,BuorX,BuorY);
 
             Console.Title = "FirstFantazy";
-
+            CreateScene.LoadScene("IntroScene");
             Console.Write("Give your hero name: ");
-            name = Console.ReadLine();
+            string name = Console.ReadLine();
 
             #region GameDifficulty
 
@@ -77,7 +77,7 @@ namespace FirstFantazyProgram
 
             if (myHero.IsLife == true)
             {
-               // myHero = myLevels.LoadLevel2(myHero);
+               //myHero = myLevels.LoadLevel2(myHero);
             }
             if (myHero.IsLife == true)
             {

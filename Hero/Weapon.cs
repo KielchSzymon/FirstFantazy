@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FirstFantazyHeroWeapon
+namespace FirstFantazy_Hero_Weapon
 {
     public class Weapon
     {

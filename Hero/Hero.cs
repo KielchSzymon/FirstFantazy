@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using FirstFantazyHeroWeapon;
+using FirstFantazy_Hero_Weapon;
 
-namespace FirstFantazyHero
+namespace FirstFantazy_Hero
 {
     public class Hero
     {

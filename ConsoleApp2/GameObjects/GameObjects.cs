@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-using FirstFantazyHero;
+using FirstFantazy_Hero;
 
-namespace FirstFantazyGameObject
+namespace FirstFantazy_GameObject
 {
-    class GameObjeckt
+    class GameObject
     {
         public void Campfire(int durabilityWorth, Hero actualDurability)
         {
