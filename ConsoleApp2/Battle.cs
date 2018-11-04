@@ -7,6 +7,7 @@ using FirstFantazy_StoryText;
 
 using FirstFantazy_Hero;
 using FirstFantazy_Hero_Weapon;
+using FirstFantazy.Story;
 
 
 namespace FirstFantazy_Battle
@@ -49,8 +50,7 @@ namespace FirstFantazy_Battle
 
                     if (enemy.Life <= 0)
                     {
-                        Console.WriteLine("Przeciwnik pokonany:");
-                        Console.WriteLine();
+                        BattleText.OpponentDefeated();
                         enemy.IsLife = false;
                     }
 
@@ -61,16 +61,16 @@ namespace FirstFantazy_Battle
                 }
                 else
                 {
-                    Console.WriteLine("Broń nie czyni krzywdy przeciwnikowi, za to traci 1 punkt wytrzymałości.");
-
+                    BattleText.TheWeaponDoesNotHurt();
+                
                     weapon.Hardness--;
 
-                    Console.WriteLine($"Po stracie punktu broń ma wytrzymałość: {weapon.Hardness}");
+                    BattleText.StateOfArms(weapon);
 
                     if (weapon.Hardness <= 0)
                     {
                         heroes[j].Inventory[0] = null;
-                        Console.WriteLine("Twoja broń {0}, uległa zniszczeniu!", weapon.WeponName);
+                        BattleText.WeaponDestroyed(weapon);
                     }
                 }
             }
@@ -109,8 +109,7 @@ namespace FirstFantazy_Battle
                 {
                     Console.WriteLine();
                     StoryText.HeroColorText(heroes[j]);
-                    Console.WriteLine("Twoja broń uległa zniszczeniu, nie możesz atakowć");
-                    Console.WriteLine();
+                    BattleText.InformationWeaponDestroyed();
                 }
                 else
                 {
@@ -124,9 +123,8 @@ namespace FirstFantazy_Battle
                     {
                         selectedEnemy = randomAttack.Next(0, enemies.Count);
 
-                        Console.WriteLine();
-                        Console.WriteLine($"{heroes[j].Name}, atkuje losowo wybranego przeciwnika {enemies[selectedEnemy].Name}");
-                        Console.WriteLine();
+                        BattleText.HeroRandomAttack(heroes, enemies, j, selectedEnemy);
+
                     }
                     else
                     {
@@ -142,6 +140,8 @@ namespace FirstFantazy_Battle
                         i = randomAttack.Next(0, enemies.Count);
 
                         var heroesNumber = randomAttack.Next(0, heroes.Count);
+
+                        BattleText.RandomEnemyAttack(heroes, enemies, j, i);
 
                         Console.WriteLine();
                         Console.WriteLine("Atakuje losowo przeciwnik " + enemies[i].Name);

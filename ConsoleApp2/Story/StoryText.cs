@@ -20,9 +20,8 @@ namespace FirstFantazy_StoryText
             if (i==0)
             {
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue...");
+                Console.Write("Press any key to continue... ");
                 Console.ReadKey();
-                Console.WriteLine();
             }
             if (i == 1)
             {
@@ -135,6 +134,24 @@ namespace FirstFantazy_StoryText
             Console.WriteLine();
         }
 
+        public static int ChooseYourWay(Hero hero)
+        {
+            return hero.HeroDirection("Wybierz drogę (1) lub (2): ");
+        }
+
+        public static void VictoryInBattle()
+        {
+                Console.WriteLine("Zwycięstwo!");
+        }
+
+        public static void EndOfTheLevel()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Gratulacje, ukończyłeś poziom!");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+        }
+
         public static void EndOfTheGame()
         {
             Console.WriteLine();
@@ -200,9 +217,9 @@ namespace FirstFantazy_StoryText
 
         public static string DownloadingData()
         {
-            Console.WriteLine();
-            Console.Write(">> ");
+            Console.CursorSize = 100;
             string item = Console.ReadLine();
+            Console.CursorSize = 10;
             return item;
         }
 

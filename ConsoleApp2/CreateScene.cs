@@ -36,21 +36,23 @@ namespace FirstFantazy_Scene
             {
                 LoadFristScene();
             }
-            if(sceneNumber == "IntroScene")
+            if(sceneNumber == "BeginScene")
             {
-                LoadIntroScene();
+                LoadGameBeginScene();
             }
         }
 
-        private static void LoadIntroScene()
+        private static void LoadGameBeginScene()
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
-            //GraphicGameObjects.DrawIntro();
+
+            GraphicGameObjects.DrawFirstFantazyKeyboardText();
+
             //GraphicGameObjects.DrawSword(5, 0);
-            GraphicGameObjects.DrawTorch(20, 0);
+            //GraphicGameObjects.DrawTorch(10, 0);
             //GraphicGameObjects.DrawStick(20, 0);
-            //GraphicGameObjects.DrawEnterVer2(0,0,5,5,"1");
+
             StoryText.SelectWayDisplayDelay(0);
             Console.Clear();
         }
@@ -59,10 +61,9 @@ namespace FirstFantazy_Scene
         {
             Console.Clear();
 
-            GraphicGameObjects.DrawEnterVer1(Convert.ToInt16(Console.CursorLeft),Convert.ToInt16(Console.CursorTop+2), "Enter1");
-            GraphicGameObjects.DrawEnterVer1(50, 2, "Enter2");
+            GraphicGameObjects.DrawCaveEnterV2(0, 0, "Enter 1");
+            GraphicGameObjects.DrawCaveEnterV2(28, 0, "Enter 2");
 
-            Console.WriteLine();
         }
 
     }
