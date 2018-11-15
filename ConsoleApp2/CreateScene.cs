@@ -32,13 +32,21 @@ namespace FirstFantazy_Scene
 
         public static void LoadScene(string sceneNumber)
         {
-            if(sceneNumber == "Level1")
+            if(sceneNumber == "Level1EnterScene")
             {
-                LoadFristScene();
+                LoadEnterScene();
             }
             if(sceneNumber == "BeginScene")
             {
                 LoadGameBeginScene();
+            }
+            if (sceneNumber == "Level1TorchScene")
+            {
+                LoadTorchScene();
+            }
+            if (sceneNumber == "Level3StickScene")
+            {
+                LoadStickScene();
             }
         }
 
@@ -47,17 +55,16 @@ namespace FirstFantazy_Scene
             Console.Clear();
             Console.SetCursorPosition(0, 0);
 
-            GraphicGameObjects.DrawFirstFantazyKeyboardText();
+            //GraphicGameObjects.DrawFirstFantazyKeyboardText();
 
             //GraphicGameObjects.DrawSword(5, 0);
             //GraphicGameObjects.DrawTorch(10, 0);
-            //GraphicGameObjects.DrawStick(20, 0);
-
-            StoryText.SelectWayDisplayDelay(0);
+            
+            StoryText.SelectWayDisplayDelay(4);
             Console.Clear();
         }
 
-        private static void LoadFristScene()
+        private static void LoadEnterScene()
         {
             Console.Clear();
 
@@ -66,5 +73,26 @@ namespace FirstFantazy_Scene
 
         }
 
+        private static void LoadTorchScene()
+        {
+            Console.Clear();
+
+            GraphicGameObjects.DrawTorch(10, 0);
+        }
+
+        private static void LoadStickScene()
+        {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+
+            GraphicGameObjects.DrawStick(20, 0);
+            StoryText.SelectWayDisplayDelay(4);
+            Console.Clear();
+        }
+
+        private static void SeparatorScene()
+        {
+            GraphicGameObjects.DrawSeparator(40, 0);
+        }
     }
 }

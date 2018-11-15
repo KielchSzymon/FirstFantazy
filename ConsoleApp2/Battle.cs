@@ -143,11 +143,11 @@ namespace FirstFantazy_Battle
 
                         BattleText.RandomEnemyAttack(heroes, enemies, j, i);
 
-                        Console.WriteLine();
-                        Console.WriteLine("Atakuje losowo przeciwnik " + enemies[i].Name);
+                        //Console.WriteLine();
+                        //Console.WriteLine("Atakuje losowo przeciwnik " + enemies[i].Name);
 
-                        Console.WriteLine("Atkuje losowo bohatera " + heroes[j].Name);
-                        Console.WriteLine();
+                        //Console.WriteLine("Atkuje losowo bohatera " + heroes[j].Name);
+                        //Console.WriteLine();
 
                         Console.ForegroundColor = ConsoleColor.Red;
 

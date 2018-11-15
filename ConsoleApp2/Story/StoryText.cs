@@ -6,6 +6,8 @@ using System.Text;
 
 using FirstFantazy_Hero;
 using FirstFantazy_Hero_Weapon;
+using FirstFantazy_Graphic_Game_Objects;
+
 
 
 
@@ -31,16 +33,34 @@ namespace FirstFantazy_StoryText
             }
             if (i == 2)
             {
+
                 Console.SetCursorPosition(Console.CursorLeft + 29, Console.CursorTop);
+
+                Console.CursorVisible = false;
+            
                 Thread.Sleep(3000);
+
+                Console.CursorVisible = true;
+
             }
             if (i == 3)
             {
                 Thread.Sleep(3000);
             }
+            if (i == 4)
+            {
+                Console.SetCursorPosition(0,25);
+                Console.Write("Press any key to continue...");
+                Console.ReadKey();
+            }
+            if (i == 5)
+            {
+                Console.SetCursorPosition(0, 25);
+                Console.Write("Press any key to continue...");
+            }
             else
             {
-                Thread.Sleep(3000);
+                //Thread.Sleep(3000);
             }
         }
 
@@ -134,11 +154,6 @@ namespace FirstFantazy_StoryText
             Console.WriteLine();
         }
 
-        public static int ChooseYourWay(Hero hero)
-        {
-            return hero.HeroDirection("Wybierz drogę (1) lub (2): ");
-        }
-
         public static void VictoryInBattle()
         {
                 Console.WriteLine("Zwycięstwo!");
@@ -148,15 +163,22 @@ namespace FirstFantazy_StoryText
         {
             Console.WriteLine();
             Console.WriteLine("Gratulacje, ukończyłeś poziom!");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
         }
+
+        public static void SimpleRoadSelection()
+        {
+            Console.Write("Wybierz drogę (1) lub (2): ");
+        }
+
+        //public static int ChooseYourWay(Hero hero)
+        //{
+        //    return hero.HeroDirection("Wybierz drogę (1) lub (2): ");
+        //}
 
         public static void EndOfTheGame()
         {
-            Console.WriteLine();
-            Console.WriteLine("End of the game.");
-            Console.WriteLine("Press any key to continue...");
+            GraphicGameObjects.WriteLineSetCursorPosition(35, 11, "End of the game.");
+            SelectWayDisplayDelay(2);
         }
 
         public static void BattleDurabilityDown(Hero hero)
@@ -191,12 +213,11 @@ namespace FirstFantazy_StoryText
 
         public static void HeroCondition(Hero hero)
         {
-            Console.WriteLine();
-            Console.WriteLine("------------------------------------------------------------");
-            Console.WriteLine("hero condition:");
-            Console.Write("Name :" );
+            Console.WriteLine("Hero condition: ");
+            Console.Write("Name " );
             HeroColorText(hero);
-            Console.WriteLine("Life  [{0}]  Durability [{1}]", hero.Life, hero.Durability);
+            Console.WriteLine("Life [{0}] ", hero.Life);
+            Console.WriteLine("Durability [{0}] ", hero.Durability);
             
 
             for (int i = 0; i < hero.Inventory.Length; i++)
@@ -204,14 +225,14 @@ namespace FirstFantazy_StoryText
                 if (hero.Inventory[i] != null)
                 {
                     Weapon weapon = hero.Inventory[i] as Weapon;
-                    Console.WriteLine("Broń numer: " + i + " " + weapon.WeponName);
+                    Console.WriteLine("Broń numer " + i + " " + weapon.WeponName);
                 }
                 else
                 {
                     //Console.WriteLine("Broń numer: " + i + " Brak broni.");
                 }
             }
-            Console.WriteLine("------------------------------------------------------------");
+            Console.WriteLine();
             Console.WriteLine();
         }
 
@@ -246,5 +267,6 @@ namespace FirstFantazy_StoryText
             Console.WriteLine(hero.Name);
             SetColor(currientColor);
         }
-    }
+
+    } 
 }

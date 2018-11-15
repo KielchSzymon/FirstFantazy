@@ -105,7 +105,7 @@ namespace FirstFantazy_Graphic_Game_Objects
             cursorY = DrawSwordFirebrand(cursorX - 2, cursorY + 8, 5);
             DrawHandle(cursorX - 2, cursorY - 1);
         }
-        public static void DrawStick(int cursorX,int cursorY)
+        public static void DrawStick(int cursorX, int cursorY)
         {
             int endCursorPositionX;
             int endCursorPositionY;
@@ -126,6 +126,11 @@ namespace FirstFantazy_Graphic_Game_Objects
             WriteLineSetCursorPosition(cursorX + 3, cursorY - 3, "]");
 
             Console.SetCursorPosition(endCursorPositionX, endCursorPositionY);
+        }
+
+        public static void DrawSeparator(int cursorX, int cursorY)
+        {
+            DrawingLoop(cursorX, cursorY, 1, 0, 5, 0, "++", "++", "cursorX++", "cursorY", "*");
         }
 
         #region Loop

@@ -9,16 +9,21 @@ namespace FirstFantazy.Story.LevelText
 {
     class Level3Text: StoryText
     {
+        public static void TwoExitsFromTheCave()
+        {
+            Console.WriteLine("Jaskinia się kończy, korytarz rozwidla w lewo (1) i w prwo (2).");
+        }
+
         public static void MeetingOfACompanion(Hero hero2)
         {
-            Console.WriteLine("Spotykasz bohatera o imieniu {0}, który rzuca ci kij z ostrzeżeniem. 'Uwaga nadchodzą!' ", hero2.Name);
-            Console.WriteLine();
+            Console.WriteLine("Spotykasz bohatera o imieniu {0}.", hero2.Name);
+            Console.WriteLine("Rzuca ci kij i krzyczy. 'Uwaga nadchodzą!' ");
         }
 
         public static void KilledByAnAnimal()
         {
             Console.WriteLine();
-            Console.WriteLine("Atakuje cię nieznany zwierz i giniesz!");
+            Console.WriteLine("Atakuje cię nieznany zwierz. Giniesz!");
         }
     }
 }

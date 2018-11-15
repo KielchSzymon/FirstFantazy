@@ -18,7 +18,7 @@ namespace FirstFantazy.Story.LevelText
         public static void ChooseYourWay()
         {
             Console.WriteLine();
-            Console.WriteLine("Przed sobą widzisz dwie ścieżki, idziesz w (1) lewo lub (2) w prawo.");
+            Console.Write("Przed sobą widzisz dwa wejścia, idziesz w (1) lewo lub (2) w prawo. ");
         }
 
         public static void YouAreDeadInTheCleft()
@@ -29,9 +29,7 @@ namespace FirstFantazy.Story.LevelText
         public static void YouEndTheLevelWithTheTorch()
         {
             Console.WriteLine("Dzięki pochodni udaje Ci się przejść do kolejnej jaskini.");
-            Console.WriteLine();
             Console.WriteLine("Gratulacje, ukończyłeś poziom!");
-            Console.WriteLine("Press any key to continue...");
         }
 
         public static void YouFoundATorch()
@@ -43,5 +41,13 @@ namespace FirstFantazy.Story.LevelText
         {
             Console.WriteLine("Tu już nic nie ma.");
         }
+
+        public static void TheSamePlace()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Ponownie wracasza w to samo miejsce.");
+        }
+
+
     }
 }

@@ -17,7 +17,7 @@ namespace FirstFantazy_Levels
     {
         public Hero LoadLevel1(Hero hero)
         {
-
+            int i = 0;
             int direction;
 
             TheBeginningOfTheLevel("1");
@@ -30,9 +30,14 @@ namespace FirstFantazy_Levels
 
             do
             {
-                StoryText.SelectWayDisplayDelay(0);
+                StoryText.SelectWayDisplayDelay(4);
 
-                CreateScene.LoadScene("Level1");
+                CreateScene.LoadScene("Level1EnterScene");
+
+                if (i > 0)
+                {
+                    Level1Text.TheSamePlace();
+                }
 
                 Level1Text.ChooseYourWay();
 
@@ -42,13 +47,16 @@ namespace FirstFantazy_Levels
                 {
                     if (!hero.backPack.ContainsKey("items"))
                     {
+                        Console.Clear();
                         Level1Text.YouAreDeadInTheCleft();
+                        StoryText.SelectWayDisplayDelay(4);
                         hero.IsLife = false;
                     }
                     else if (hero.backPack.ContainsKey("items") && hero.backPack["items"].Contains("torch"))
                     {
+                        Console.Clear();
                         Level1Text.YouEndTheLevelWithTheTorch();
-                        Console.ReadKey();
+                        StoryText.SelectWayDisplayDelay(4);
                         hero.LevelEnd = true;
                     }
                 }
@@ -56,12 +64,18 @@ namespace FirstFantazy_Levels
                 {
                     if (hero.backPack.Count == 0)
                     {
+                        Console.Clear();
+
+                        CreateScene.LoadScene("Level1TorchScene");
+                        Console.WriteLine();
                         Level1Text.YouFoundATorch();
+                       
                         hero.backPack["items"] = new List<object>();
                         hero.backPack["items"].Add("torch");
                     }
                     else if (hero.backPack.ContainsKey("items") && hero.backPack["items"].Contains("torch"))
                     {
+                        Console.Clear();
                         Level1Text.ThereIsNothingHere();
                     }
                 }
@@ -70,6 +84,8 @@ namespace FirstFantazy_Levels
                 {
                     hero.IsLife = false;
                 }
+
+                i++;
             }
             while (hero.IsLife && !hero.LevelEnd);
 
@@ -80,6 +96,7 @@ namespace FirstFantazy_Levels
 
         public Hero LoadLevel2(Hero hero)
         {
+            int direction;
 
             TheBeginningOfTheLevel("2");
 
@@ -89,10 +106,16 @@ namespace FirstFantazy_Levels
 
             Level2Text.SelectTheUpOrDownPath();
 
+            Console.WriteLine();
+            StoryText.SimpleRoadSelection();
+
+            direction = Convert.ToInt16(StoryText.DownloadingData());
+
             do
             {
-                if (Level2Text.ChooseYourWay(hero) == 1)
+                if (direction == 1)
                 {
+                    Console.WriteLine();
                     Level2Text.RockShelfBend();
 
                     hero.HurtHero();
@@ -101,10 +124,13 @@ namespace FirstFantazy_Levels
 
                     hero.LevelEnd = true;
 
+                    StoryText.SelectWayDisplayDelay(4);
                 }
                 else
                 {
+                    Console.WriteLine();
                     Level2Text.DeathInTheHole();
+                    StoryText.SelectWayDisplayDelay(4);
                     hero.IsLife = false;
                 }
             } while (hero.IsLife && !hero.LevelEnd);
@@ -116,6 +142,7 @@ namespace FirstFantazy_Levels
 
         public Hero LoadLevel3(Hero hero, Hero hero2)
         {
+            int direction;
 
             TheBeginningOfTheLevel("3");
 
@@ -123,13 +150,29 @@ namespace FirstFantazy_Levels
 
             #region BodyLevel
 
+            Level3Text.TwoExitsFromTheCave();
+
+            Console.WriteLine();
+
+            Level3Text.SimpleRoadSelection();
+
+            direction = Convert.ToInt16(StoryText.DownloadingData());
+
             do
             {
-                if (Level1Text.ChooseYourWay(hero) == 1)
+                if (direction == 1)
                 {
+                    Console.WriteLine();
+
                     Level3Text.MeetingOfACompanion(hero2);
 
+                    StoryText.SelectWayDisplayDelay(4);
+
+                    CreateScene.LoadScene("Level3StickScene");
+
                     hero.Inventory[0] = new Weapon(2, 15, 5, "Stick");
+
+                    Console.WriteLine();
 
                     StoryText.HeroCondition(hero2);
 
@@ -181,6 +224,8 @@ namespace FirstFantazy_Levels
                 {
                     Level3Text.KilledByAnAnimal();
                     hero.IsLife = false;
+
+                    StoryText.SelectWayDisplayDelay(4);
                 }
 
             } while (hero.IsLife && !hero.LevelEnd);
@@ -232,10 +277,11 @@ namespace FirstFantazy_Levels
 
             Console.SetCursorPosition(40, 11);
 
-            Console.WriteLine("Level{0}", levelNumberText);
-            Console.WriteLine();
+            Console.WriteLine("Level {0}", levelNumberText);
+            //Console.WriteLine();
 
             StoryText.SelectWayDisplayDelay(2);
+            Console.Clear();
 
         }
     }

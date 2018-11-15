@@ -28,7 +28,7 @@ namespace FirstFantazy
             CreateScene.LoadGameWindow(0, WindowX, WindowY, BuorX, BuorY);
 
             Console.Title = "FirstFantazy";
-            CreateScene.LoadScene("BeginScene");
+            //CreateScene.LoadScene("BeginScene");
             Console.Write("Give your hero name: ");
             string name = StoryText.DownloadingData();
 
@@ -36,9 +36,7 @@ namespace FirstFantazy
 
             hero = ChooseTheDifficultyLevelOfTheGame(name, hero);
 
-            LoadLevel(1);
-
-            Console.ReadKey();
+            LoadLevel(3);
         }
 
         private void LoadLevel(int levelNumber)
@@ -67,7 +65,9 @@ namespace FirstFantazy
             }
             else
             {
+                Console.Clear();
                 StoryText.EndOfTheGame();
+                StoryText.SelectWayDisplayDelay(4);
             }
 
         }
@@ -79,8 +79,8 @@ namespace FirstFantazy
             do
             {
                 Console.WriteLine();
-                Console.WriteLine("Select diffculty level: Low = [1] Normal = [2] Hard = [3]");
-                Console.WriteLine();
+                Console.Write("Select diffculty level: Low [1] Normal [2] Hard [3] ");
+                //Console.WriteLine();
 
                 difficulty = Convert.ToInt16(StoryText.DownloadingData());
                 Console.WriteLine();
