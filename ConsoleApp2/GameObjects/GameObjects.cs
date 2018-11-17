@@ -6,6 +6,7 @@ using FirstFantazy_Hero;
 
 namespace FirstFantazy_GameObject
 {
+    //only github test
     class GameObject
     {
         public void Campfire(int durabilityWorth, Hero actualDurability)
