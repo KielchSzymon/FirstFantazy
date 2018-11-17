@@ -15,7 +15,7 @@ namespace FirstFantazy_StoryText
 {
     public class StoryText
     {
-        private const int i = 0;
+        private const int i = 4;
 
         public static void SelectWayDisplayDelay(int i)
         {
@@ -79,8 +79,7 @@ namespace FirstFantazy_StoryText
             Console.WriteLine("Bitwa!!!");
             Console.WriteLine();
 
-            Console.WriteLine("Jesteś zmuszony stawić czoło przeciwnikom.");
-            Console.WriteLine();
+            Console.WriteLine("Jesteś zmuszony stawić czoło przeciwnikom.");            Console.WriteLine();
 
             SelectWayDisplayDelay(i);
         }

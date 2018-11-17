@@ -168,9 +168,9 @@ namespace FirstFantazy_Levels
 
                     StoryText.SelectWayDisplayDelay(4);
 
-                    CreateScene.LoadScene("Level3StickScene");
-
                     hero.Inventory[0] = new Weapon(2, 15, 5, "Stick");
+
+                    CreateScene.LoadScene("Level3StickScene");
 
                     Console.WriteLine();
 
