@@ -79,7 +79,7 @@ namespace FirstFantazy_StoryText
             Console.WriteLine("Bitwa!!!");
             Console.WriteLine();
 
-            Console.WriteLine("Jesteś zmuszony stawić czoło przeciwnikom.");            Console.WriteLine();
+            Console.WriteLine("Jesteś zmuszony stawić czoło przeciwnikom.");
 
             SelectWayDisplayDelay(i);
         }
@@ -119,7 +119,7 @@ namespace FirstFantazy_StoryText
             Console.WriteLine("==================================================================");
             Console.WriteLine();
 
-            SelectWayDisplayDelay(i);
+            SelectWayDisplayDelay(0);
 
         }
 
@@ -141,7 +141,7 @@ namespace FirstFantazy_StoryText
                 enemyNumber++;
                 Console.WriteLine();
 
-                SelectWayDisplayDelay(1);
+                SelectWayDisplayDelay(0);
 
             }
         }
@@ -189,7 +189,7 @@ namespace FirstFantazy_StoryText
             Console.WriteLine($"i wynosi teraz {hero.Durability}, będzie odzyskiwał ją odpoczywając.");
             Console.WriteLine();
 
-            SelectWayDisplayDelay(i);
+            SelectWayDisplayDelay(0);
         }
 
         public static void DurabilityDownZero(Hero hero)

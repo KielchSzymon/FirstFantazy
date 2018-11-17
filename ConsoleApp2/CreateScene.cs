@@ -86,6 +86,7 @@ namespace FirstFantazy_Scene
             Console.SetCursorPosition(0, 0);
 
             GraphicGameObjects.DrawStick(20, 0);
+            GraphicGameObjects.WriteLineSetCursorPosition(20, 22, "Sick");
             StoryText.SelectWayDisplayDelay(4);
             Console.Clear();
         }

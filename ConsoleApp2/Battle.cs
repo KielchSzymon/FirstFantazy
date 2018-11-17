@@ -94,6 +94,7 @@ namespace FirstFantazy_Battle
         public List<Hero> Initialize()
         {
             StoryText.BattleStart();
+            Console.Clear();
 
             do
             {
