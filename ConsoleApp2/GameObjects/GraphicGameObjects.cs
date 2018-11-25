@@ -76,7 +76,6 @@ namespace FirstFantazy_Graphic_Game_Objects
             WriteLineSetCursorPosition(cursorX+10, cursorY+19, enterName);
             
         }
-
         public static void DrawSword(int cursorX, int cursorY)
         {
             WriteLineSetCursorPosition(cursorX, cursorY,   @" /\");

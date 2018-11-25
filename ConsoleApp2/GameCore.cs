@@ -1,12 +1,13 @@
 ﻿using FirstFantazy_Hero;
 using FirstFantazy_Levels;
 using FirstFantazy_Scene;
+using FirstFantazy.Story;
 using FirstFantazy_StoryText;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FirstFantazy
+namespace FirstFantazy.Core
 {
     public class GameCore
     {
@@ -29,14 +30,25 @@ namespace FirstFantazy
 
             Console.Title = "FirstFantazy";
             //CreateScene.LoadScene("BeginScene");
-            Console.Write("Give your hero name: ");
-            string name = StoryText.DownloadingData();
 
-            //extract code under to the new method 
+            string name = SetYourName();
 
             hero = ChooseTheDifficultyLevelOfTheGame(name, hero);
 
             LoadLevel(3);
+        }
+        
+        private string SetYourName()
+        {
+            StoryText.GiveTheNameOfTheHero();
+            string name = StoryText.GetInputValue();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                name = SetYourName();
+            }
+
+            return name;
         }
 
         private void LoadLevel(int levelNumber)
@@ -74,15 +86,14 @@ namespace FirstFantazy
 
         public static Hero ChooseTheDifficultyLevelOfTheGame(string name, Hero hero)
         {
-            int difficulty, difficultyDurability;
+            int difficulty = 0, difficultyDurability;
 
             do
             {
-                Console.WriteLine();
-                Console.Write("Select diffculty level: Low [1] Normal [2] Hard [3] ");
-                //Console.WriteLine();
+                StoryText.SelectDiffcultyLevel();
 
-                difficulty = Convert.ToInt16(StoryText.DownloadingData());
+                difficulty = GetInputValueHandlingExceptions(0, 1, 3);
+ 
                 Console.WriteLine();
 
                 if (difficulty == 1)
@@ -103,14 +114,42 @@ namespace FirstFantazy
                     difficultyDurability = 2;
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("You made the wrong choice.");
-                }
 
             } while (true);
 
             return hero = new Hero(name, difficulty, difficultyDurability, 1);
+        }
+
+        public static int GetInputValueHandlingExceptions(int factor, int minValue, int maxValue)
+        {
+            int selectedValue = 0;
+
+            try
+            {
+                selectedValue = Int16.Parse(StoryText.GetInputValue());
+            }
+            catch (FormatException ex)
+            {
+                BattleText.SelectValueHandlingExceptionsText(); 
+                selectedValue = GetInputValueHandlingExceptions(factor, minValue, maxValue);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            if (selectedValue > maxValue)
+            {
+                StoryText.EnterAValueFromTheMaximumToTheMinimumText(minValue, maxValue);
+               selectedValue = GetInputValueHandlingExceptions(factor, minValue, maxValue);
+            }
+            if (selectedValue < minValue)
+            {
+                StoryText.EnterAValueFromTheMaximumToTheMinimumText(minValue, maxValue);
+                selectedValue = GetInputValueHandlingExceptions(factor, minValue, maxValue);
+            }
+
+            return selectedValue - factor;
         }
     }
 }

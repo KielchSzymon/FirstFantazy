@@ -8,6 +8,7 @@ using FirstFantazy_StoryText;
 using FirstFantazy_Hero;
 using FirstFantazy_Hero_Weapon;
 using FirstFantazy.Story;
+using FirstFantazy.Core;
 
 
 namespace FirstFantazy_Battle
@@ -33,15 +34,13 @@ namespace FirstFantazy_Battle
         {
             Weapon weapon = atacker.Inventory[0] as Weapon;
 
-            StoryText.HeroCondition(atacker);
-
             if (weapon != null && atacker.Durability > 0)
             {
                 if (enemy.Durability < weapon.Hardness)
                 {
                     enemy.Durability -= weapon.Damage;
 
-                    StoryText.BattleStats(weapon, enemy);
+                    BattleText.BattleStats(weapon, enemy);
 
                     if (enemy.Durability == 0)
                     {
@@ -56,7 +55,7 @@ namespace FirstFantazy_Battle
 
                     atacker.HeroDurabilityDownUp(durabilityDown, 0);
 
-                    StoryText.BattleDurabilityDown(atacker);
+                    BattleText.BattleDurabilityDown(atacker);
                 
                 }
                 else
@@ -78,11 +77,11 @@ namespace FirstFantazy_Battle
             {
                 if (atacker.Durability == 0)
                 {
-                    StoryText.DurabilityDownZero(atacker);
+                    BattleText.DurabilityDownZero(atacker);
                 }
                 if (weapon == null)
                 {
-                    StoryText.NoWeapon();
+                    BattleText.NoWeapon();
                 }   
             }
             if (!enemy.IsLife)
@@ -93,7 +92,7 @@ namespace FirstFantazy_Battle
 
         public List<Hero> Initialize()
         {
-            StoryText.BattleStart();
+            BattleText.BattleStart();
             Console.Clear();
 
             do
@@ -114,22 +113,28 @@ namespace FirstFantazy_Battle
                 }
                 else
                 {
-                    StoryText.PresentationOfAttacker(heroes[j]);
+                    BattleText.PresentationOfAttacker(heroes[j]);
 
-                    StoryText.PresentationEnemies(enemies);
-
-
+                    if (j == 0)
+                    {
+                        BattleText.PresentationEnemies(enemies);
+                    }
+                    else
+                    {
+                        BattleText.CompanionAtackEnemyPresentation(enemies);
+                    }
 
                     if (j == 1)
                     {
                         selectedEnemy = randomAttack.Next(0, enemies.Count);
 
                         BattleText.HeroRandomAttack(heroes, enemies, j, selectedEnemy);
-
                     }
                     else
                     {
-                        selectedEnemy = Int16.Parse(StoryText.DownloadingData()) - 1;
+                        Console.SetCursorPosition(0, 25);
+                        BattleText.SelectEnemyNumber();
+                        selectedEnemy = GameCore.GetInputValueHandlingExceptions(1, 0, 2);
                     }
 
                     Attack(heroes[j], enemies[selectedEnemy]);
@@ -144,19 +149,16 @@ namespace FirstFantazy_Battle
 
                         BattleText.RandomEnemyAttack(heroes, enemies, j, i);
 
-                        //Console.WriteLine();
-                        //Console.WriteLine("Atakuje losowo przeciwnik " + enemies[i].Name);
-
-                        //Console.WriteLine("Atkuje losowo bohatera " + heroes[j].Name);
-                        //Console.WriteLine();
-
                         Console.ForegroundColor = ConsoleColor.Red;
 
                         Weapon weaponEn = enemies[i].Inventory[0] as Weapon;
 
-                        StoryText.PresentationOfAttacker(enemies[i]);
+                        BattleText.PresentationOfAttacker(enemies[i]);
 
                         Attack(enemies[i], heroes[heroesNumber]);
+                 
+                        //StoryText.SelectWayDisplayDelay(4);
+                        Console.Clear();
 
                         if (!heroes[heroesNumber].IsLife)
                         {

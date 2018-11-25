@@ -55,7 +55,7 @@ namespace FirstFantazy_Scene
             Console.Clear();
             Console.SetCursorPosition(0, 0);
 
-            //GraphicGameObjects.DrawFirstFantazyKeyboardText();
+            GraphicGameObjects.DrawFirstFantazyKeyboardText();
 
             //GraphicGameObjects.DrawSword(5, 0);
             //GraphicGameObjects.DrawTorch(10, 0);
@@ -86,7 +86,7 @@ namespace FirstFantazy_Scene
             Console.SetCursorPosition(0, 0);
 
             GraphicGameObjects.DrawStick(20, 0);
-            GraphicGameObjects.WriteLineSetCursorPosition(20, 22, "Sick");
+            GraphicGameObjects.WriteLineSetCursorPosition(20, 22, "Stick");
             StoryText.SelectWayDisplayDelay(4);
             Console.Clear();
         }

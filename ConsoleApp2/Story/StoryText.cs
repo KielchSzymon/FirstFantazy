@@ -35,17 +35,14 @@ namespace FirstFantazy_StoryText
             {
 
                 Console.SetCursorPosition(Console.CursorLeft + 29, Console.CursorTop);
-
                 Console.CursorVisible = false;
-            
                 Thread.Sleep(3000);
-
                 Console.CursorVisible = true;
 
             }
             if (i == 3)
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(300);
             }
             if (i == 4)
             {
@@ -57,10 +54,6 @@ namespace FirstFantazy_StoryText
             {
                 Console.SetCursorPosition(0, 25);
                 Console.Write("Press any key to continue...");
-            }
-            else
-            {
-                //Thread.Sleep(3000);
             }
         }
 
@@ -74,88 +67,15 @@ namespace FirstFantazy_StoryText
             Console.ResetColor();
         }
 
-        public static void BattleStart()
+        public static void GiveTheNameOfTheHero()
         {
-            Console.WriteLine("Bitwa!!!");
-            Console.WriteLine();
-
-            Console.WriteLine("Jesteś zmuszony stawić czoło przeciwnikom.");
-
-            SelectWayDisplayDelay(i);
+            Console.Write("Podaj imię swojego boatera: ");
         }
 
-        public static void BattleStats(Weapon weapon, Hero enemy)
+        public static void SelectDiffcultyLevel()
         {
             Console.WriteLine();
-            Console.WriteLine($"broń zadaje [{weapon.Damage}] obrażeń.");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.Write($"Stan :");
-            HeroColorText(enemy);
-            Console.WriteLine($"Życie: {enemy.Life}");
-            Console.WriteLine($"Wytrzymałość: {enemy.Durability}");
-            Console.WriteLine("");
-            Console.WriteLine();
-
-            SelectWayDisplayDelay(i);
-
-        }
-
-        public static void PresentationOfAttacker(Hero hero)
-        {
-       
-            Weapon weapon = hero.Inventory[0] as Weapon;
-
-
-            Console.WriteLine();
-            Console.WriteLine("Atak !");
-            Console.WriteLine();
-            Console.WriteLine("==================================================================");
-            Console.Write($"Kolej: ");
-            HeroColorText(hero);
-            Console.WriteLine($"Używa broni [{weapon.WeponName}]");
-            Console.WriteLine($"O wytrzymałości [{ weapon.Hardness}]");
-            Console.WriteLine($"Zadającej obrażenia na poziomie [{weapon.Damage}].");
-            Console.WriteLine("==================================================================");
-            Console.WriteLine();
-
-            SelectWayDisplayDelay(0);
-
-        }
-
-        public static void PresentationEnemies(List<Hero> enemies)
-        {
-            int enemyNumber = 1;  
-            foreach (Hero enemy in enemies)
-            {
-                Console.WriteLine(enemy.Name + " atakuj - " + enemyNumber);
-
-                Console.WriteLine();
-                Console.Write($"Stan wroga: ");
-                HeroColorText(enemy);
-                Console.WriteLine($"Życie: {enemy.Life}");
-                Console.WriteLine($"Wytrzymałość: {enemy.Durability}");
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                enemyNumber++;
-                Console.WriteLine();
-
-                SelectWayDisplayDelay(0);
-
-            }
-        }
-
-        public static void NoWeapon()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Nie posiadasz żadnej broni, nie możesz atakowac! Atakuje ten kto ma broń");
-            Console.WriteLine();
-        }
-
-        public static void VictoryInBattle()
-        {
-                Console.WriteLine("Zwycięstwo!");
+            Console.Write("Wybierz poziom trudności: łatwy [1] normalny [2] trudny [3]: ");
         }
 
         public static void EndOfTheLevel()
@@ -169,45 +89,12 @@ namespace FirstFantazy_StoryText
             Console.Write("Wybierz drogę (1) lub (2): ");
         }
 
-        //public static int ChooseYourWay(Hero hero)
-        //{
-        //    return hero.HeroDirection("Wybierz drogę (1) lub (2): ");
-        //}
-
-        public static void EndOfTheGame()
+        public static string GetInputValue()
         {
-            GraphicGameObjects.WriteLineSetCursorPosition(35, 11, "End of the game.");
-            SelectWayDisplayDelay(2);
-        }
-
-        public static void BattleDurabilityDown(Hero hero)
-        {
-            Console.WriteLine();
-            Console.Write("Wytrzynmałość bohatera");
-            HeroColorText(hero);
-            Console.WriteLine("W wyniku trudu jaki włożył w walkę spadła");
-            Console.WriteLine($"i wynosi teraz {hero.Durability}, będzie odzyskiwał ją odpoczywając.");
-            Console.WriteLine();
-
-            SelectWayDisplayDelay(0);
-        }
-
-        public static void DurabilityDownZero(Hero hero)
-        {
-            Console.WriteLine();
-            Console.Write("Bohater ");
-            HeroColorText(hero);
-            Console.WriteLine("Stacił wytrzymałość, brkuje mu sił, żeby atakować.");
-            Console.WriteLine();
-        }
-
-        public static void HeroDurabilityRegeneration(Hero hero)
-        {
-            Console.WriteLine();
-            Console.Write("Bohater");
-            HeroColorText(hero);
-            Console.WriteLine("Regeneruje swoją wytrzymałość.");
-            Console.WriteLine();
+            Console.CursorSize = 100;
+            string item = Console.ReadLine();
+            Console.CursorSize = 10;
+            return item;
         }
 
         public static void HeroCondition(Hero hero)
@@ -224,7 +111,7 @@ namespace FirstFantazy_StoryText
                 if (hero.Inventory[i] != null)
                 {
                     Weapon weapon = hero.Inventory[i] as Weapon;
-                    Console.WriteLine("Broń numer " + i + " " + weapon.WeponName);
+                    Console.WriteLine("Broń numer " + i+1 + " " + weapon.WeponName);
                 }
                 else
                 {
@@ -233,14 +120,6 @@ namespace FirstFantazy_StoryText
             }
             Console.WriteLine();
             Console.WriteLine();
-        }
-
-        public static string DownloadingData()
-        {
-            Console.CursorSize = 100;
-            string item = Console.ReadLine();
-            Console.CursorSize = 10;
-            return item;
         }
 
         public static void HeroColorText(Hero hero)
@@ -267,5 +146,25 @@ namespace FirstFantazy_StoryText
             SetColor(currientColor);
         }
 
+        public static void HeroDurabilityRegeneration(Hero hero)
+        {
+            Console.WriteLine();
+            Console.Write("Bohater");
+            HeroColorText(hero);
+            Console.WriteLine("Regeneruje swoją wytrzymałość.");
+            Console.WriteLine();
+        }
+
+        public static void EndOfTheGame()
+        {
+            GraphicGameObjects.WriteLineSetCursorPosition(35, 11, "End of the game.");
+            SelectWayDisplayDelay(2);
+        }
+
+        public static void EnterAValueFromTheMaximumToTheMinimumText(int minValue, int maxValue)
+        {
+            Console.WriteLine();
+            Console.Write("Podaj wartość liczbową z przedziłau od " + minValue + " do " + maxValue + ".  ");
+        }
     } 
 }

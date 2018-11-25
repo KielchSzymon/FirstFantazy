@@ -10,6 +10,8 @@ using FirstFantazy_Hero;
 using FirstFantazy_Hero_Weapon;
 using FirstFantazy_StoryText;
 using FirstFantazy_Scene;
+using FirstFantazy.Story;
+using FirstFantazy.Core;
 
 namespace FirstFantazy_Levels
 {
@@ -18,7 +20,7 @@ namespace FirstFantazy_Levels
         public Hero LoadLevel1(Hero hero)
         {
             int i = 0;
-            int direction;
+            int direction = 0;
 
             TheBeginningOfTheLevel("1");
 
@@ -41,7 +43,9 @@ namespace FirstFantazy_Levels
 
                 Level1Text.ChooseYourWay();
 
-                direction = Convert.ToInt16(StoryText.DownloadingData());
+
+                GameCore.GetInputValueHandlingExceptions(0, 1, 2);
+
 
                 if (direction == 1)
                 {
@@ -109,7 +113,7 @@ namespace FirstFantazy_Levels
             Console.WriteLine();
             StoryText.SimpleRoadSelection();
 
-            direction = Convert.ToInt16(StoryText.DownloadingData());
+            direction = GameCore.GetInputValueHandlingExceptions(0, 1, 2);
 
             do
             {
@@ -156,7 +160,7 @@ namespace FirstFantazy_Levels
 
             Level3Text.SimpleRoadSelection();
 
-            direction = Convert.ToInt16(StoryText.DownloadingData());
+            direction = GameCore.GetInputValueHandlingExceptions(0, 1, 2);
 
             do
             {
@@ -171,8 +175,6 @@ namespace FirstFantazy_Levels
                     hero.Inventory[0] = new Weapon(2, 15, 5, "Stick");
 
                     CreateScene.LoadScene("Level3StickScene");
-
-                    Console.WriteLine();
 
                     StoryText.HeroCondition(hero2);
 
@@ -216,7 +218,7 @@ namespace FirstFantazy_Levels
                     if (hero.IsLife)
                     {
                         hero.LevelEnd = true;
-                        Level3Text.VictoryInBattle();
+                        BattleText.VictoryInBattle();
                         Console.ReadKey();
                     }
                 }
@@ -278,7 +280,6 @@ namespace FirstFantazy_Levels
             Console.SetCursorPosition(40, 11);
 
             Console.WriteLine("Level {0}", levelNumberText);
-            //Console.WriteLine();
 
             StoryText.SelectWayDisplayDelay(2);
             Console.Clear();

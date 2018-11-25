@@ -6,6 +6,7 @@ using FirstFantazy_StoryText;
 using FirstFantazy_Hero;
 using FirstFantazy_Scene;
 using FirstFantazy_Levels;
+using FirstFantazy.Core;
 
 namespace FirstFantazy.Program
 {

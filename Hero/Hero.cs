@@ -81,19 +81,5 @@ namespace FirstFantazy_Hero
             
         }
 
-        public int HeroDirection(string messageForThePlayer)
-        {
-            int direction;
-
-            Console.WriteLine();
-            Console.WriteLine(messageForThePlayer);
-            Console.WriteLine();
-            Console.Write(">> ");
-            direction = Convert.ToInt16(Console.ReadLine());
-            Console.WriteLine();
-
-            return direction;
-        }
-
     }
 }
