@@ -1,12 +1,27 @@
-﻿using System;
+﻿using DataAccess.Data;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace DataAcces
 {
-    class Program
+    public class FirstFantasyDBContextFactory : IDesignTimeDbContextFactory<FirstFantasyDBContext>
     {
-        static void Main(string[] args)
+        public FirstFantasyDBContext CreateDbContext(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+
+            var optionsBuilder = new DbContextOptionsBuilder<TripDBContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("TripDBConnection"));
+
+            return new TripDBContext(optionsBuilder.Options);
+
+
         }
     }
 }
