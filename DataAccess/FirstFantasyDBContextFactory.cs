@@ -1,4 +1,5 @@
 ﻿using DataAccess.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -16,12 +17,10 @@ namespace DataAcces
                 .Build();
 
 
-            var optionsBuilder = new DbContextOptionsBuilder<TripDBContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("TripDBConnection"));
+            var optionsBuilder = new DbContextOptionsBuilder<FirstFantasyDBContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("FirstFantasyDBConnection"));
 
-            return new TripDBContext(optionsBuilder.Options);
-
-
+            return new FirstFantasyDBContext(optionsBuilder.Options);
         }
     }
 }
