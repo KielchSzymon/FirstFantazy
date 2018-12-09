@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstFantazy", "ConsoleApp2\FirstFantazy.csproj", "{16F4F910-D26D-4240-844B-DBDA0734CB92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstFantasy", "ConsoleApp2\FirstFantasy.csproj", "{16F4F910-D26D-4240-844B-DBDA0734CB92}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hero", "Hero\Hero.csproj", "{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{DB309C2D-6A6F-4693-A2ED-69CF487BCD7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2780B4A0-8451-49A4-9C64-41F1E1AE19B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB309C2D-6A6F-4693-A2ED-69CF487BCD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB309C2D-6A6F-4693-A2ED-69CF487BCD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB309C2D-6A6F-4693-A2ED-69CF487BCD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB309C2D-6A6F-4693-A2ED-69CF487BCD7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
