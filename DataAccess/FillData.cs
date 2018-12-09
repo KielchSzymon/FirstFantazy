@@ -14,16 +14,9 @@ namespace DataAccess
     {
         public static void Main()
         {
-            IConfiguration configuration = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory())
-               .AddJsonFile("appsettings.json")
-               .Build();
+            FirstFantasyDBContextFactory dbFactory = new FirstFantasyDBContextFactory();
 
-
-            var optionsBuilder = new DbContextOptionsBuilder<FirstFantasyDBContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("FirstFantasyDBConnection"));
-
-            using (var db = new FirstFantasyDBContext(optionsBuilder.Options))
+            using (var db = dbFactory.CreateDbContext(null))
             {
                 List<LevelText> LevelsTexts = new List<LevelText>()
                 {
@@ -40,11 +33,6 @@ namespace DataAccess
                         StoryText = "test2"
                     }
                 };
-
-
-
-                LevelsTexts.Add(new LevelText()
-               );
 
                 db.LevelsTexts.AddRange(LevelsTexts);
                 db.SaveChanges();
