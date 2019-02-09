@@ -6,6 +6,7 @@ using FirstFantazy_StoryText;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstFantazy.Core
 {
@@ -14,11 +15,13 @@ namespace FirstFantazy.Core
         Hero hero;
         Hero companion;
         Levels levels;
+        ServiceProvider serviceProvider;
 
-        public GameCore()
+        public GameCore(ServiceProvider serviceProvider)
         {
             hero = new Hero();
             levels = new Levels();
+            this.serviceProvider = serviceProvider;
         }
 
         public void StartCore()
@@ -35,7 +38,7 @@ namespace FirstFantazy.Core
 
             hero = ChooseTheDifficultyLevelOfTheGame(name, hero);
 
-            LoadLevel(1);
+            LoadLevel(1, serviceProvider);
         }
         
         private string SetYourName()
@@ -51,24 +54,24 @@ namespace FirstFantazy.Core
             return name;
         }
 
-        private void LoadLevel(int levelNumber)
+        private void LoadLevel(int levelNumber, ServiceProvider sp)
         {
             if (hero.IsLife)
             {
                 switch (levelNumber)
                 {
                     case 1:
-                        hero = levels.LoadLevel1(hero);
-                        LoadLevel(2);
+                        hero = levels.LoadLevel1(hero, sp);
+                        LoadLevel(2, sp);
                     break;
                     case 2:
                         hero = levels.LoadLevel2(hero);
-                        LoadLevel(3);
+                        LoadLevel(3, sp);
                     break;
                     case 3:
                         companion = new Hero();
                         hero = levels.LoadLevel3(hero, companion);
-                        LoadLevel(4);
+                        LoadLevel(4, sp);
                     break;
                     case 4:
                         hero = levels.LoadLevel4(hero, companion);

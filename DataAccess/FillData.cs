@@ -22,14 +22,16 @@ namespace DataAccess
                 {
                     new LevelText
                     {
-                        LineColor = "Red",
+                        LineColor = "White",
                         StoryLevel = 1,
-                        StoryText = "test"
+                        LevelNumber = 0,
+                        StoryText = "Budzisz się jedyne co pamiętasz to, że masz na imię {0}"
                     }
                     ,new LevelText
                     {
                         LineColor = "Orange",
                         StoryLevel = 2,
+                        LevelNumber = 0,
                         StoryText = "test2"
                     }
                 };

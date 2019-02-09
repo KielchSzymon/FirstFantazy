@@ -12,7 +12,7 @@ namespace FirstFantazy_Hero
         public string Name
         {
             get { return name; }
-            set { name = "." + value; }
+            set { name = value; }
         }
 
         public int Life { get; set; }

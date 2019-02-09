@@ -12,23 +12,26 @@ using FirstFantazy_StoryText;
 using FirstFantazy_Scene;
 using FirstFantazy.Story;
 using FirstFantazy.Core;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstFantazy_Levels
 {
     public class Levels
     {
-        public Hero LoadLevel1(Hero hero)
+        public Hero LoadLevel1(Hero hero, ServiceProvider serviceProvider)
         {
             int i = 0;
             int direction = 0;
 
             TheBeginningOfTheLevel("1");
 
+            Level1Text level1Text = new Level1Text(serviceProvider);
+
             Level1Text.HeroCondition(hero);
 
             #region BodyLevel
 
-            Level1Text.WackeUp(hero);
+            level1Text.WackeUp(hero);
 
             do
             {

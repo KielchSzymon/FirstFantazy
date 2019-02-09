@@ -1,12 +1,10 @@
-﻿
-using System;
-using System.Collections.Generic;
-
-using FirstFantazy_StoryText;
-using FirstFantazy_Hero;
-using FirstFantazy_Scene;
-using FirstFantazy_Levels;
-using FirstFantazy.Core;
+﻿using FirstFantazy.Core;
+using Microsoft.Extensions.DependencyInjection;
+using DataAccess.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using RepositoryCommon;
 
 namespace FirstFantazy.Program
 {
@@ -14,7 +12,22 @@ namespace FirstFantazy.Program
     {
         static void Main(string[] args)
         {
-            GameCore core = new GameCore();
+            var services = new ServiceCollection();
+
+            IConfiguration configuration = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json")
+             .Build();
+
+           
+            services.AddDbContext<FirstFantasyDBContext>(options =>
+         options.UseSqlServer(configuration.GetConnectionString("FirstFantasyDBConnection")));
+
+            services.AddScoped<IRepositoryLevelText, RepositoryLevelText>();
+
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+            GameCore core = new GameCore(serviceProvider);
 
             core.StartCore();
            

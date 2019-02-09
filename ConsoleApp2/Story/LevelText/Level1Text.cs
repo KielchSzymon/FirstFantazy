@@ -4,14 +4,25 @@ using System.Text;
 
 using FirstFantazy_Hero;
 using FirstFantazy_StoryText;
+using Microsoft.Extensions.DependencyInjection;
+using RepositoryCommon;
 
 namespace FirstFantazy.Story.LevelText
 {
     class Level1Text: StoryText
     {
-        public static void WackeUp(Hero hero)
+        IRepositoryLevelText repo;
+
+        public Level1Text(ServiceProvider serviceProvider)
         {
-            Console.WriteLine("Budzisz się jedyne co pamiętasz to, że masz na imię {0}", hero.Name);
+            repo = serviceProvider.GetService<IRepositoryLevelText>(); ;
+        }
+
+        public void WackeUp(Hero hero)
+        {
+            string levelText = repo.GetLevelText(0, 1);
+
+            Console.WriteLine(levelText, hero.Name);
             Console.WriteLine();
         }
 
