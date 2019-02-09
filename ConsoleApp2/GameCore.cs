@@ -35,7 +35,7 @@ namespace FirstFantazy.Core
 
             hero = ChooseTheDifficultyLevelOfTheGame(name, hero);
 
-            LoadLevel(3);
+            LoadLevel(1);
         }
         
         private string SetYourName()

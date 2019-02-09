@@ -8,25 +8,26 @@ namespace DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "LevelsTexts",
+                name: "LevelText",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    StoryText = table.Column<string>(nullable: true),
                     StoryLevel = table.Column<int>(nullable: false),
+                    LevelNummber = table.Column<short>(nullable: false),
+                    StoryText = table.Column<string>(nullable: true),
                     LineColor = table.Column<string>(maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LevelsTexts", x => x.Id);
+                    table.PrimaryKey("PK_LevelText", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LevelsTexts");
+                name: "LevelText");
         }
     }
 }

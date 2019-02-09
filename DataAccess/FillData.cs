@@ -18,7 +18,7 @@ namespace DataAccess
 
             using (var db = dbFactory.CreateDbContext(null))
             {
-                List<LevelText> LevelsTexts = new List<LevelText>()
+                List<LevelText> LevelText = new List<LevelText>()
                 {
                     new LevelText
                     {
@@ -34,7 +34,7 @@ namespace DataAccess
                     }
                 };
 
-                db.LevelsTexts.AddRange(LevelsTexts);
+                db.LevelText.AddRange(LevelText);
                 db.SaveChanges();
             }
         }

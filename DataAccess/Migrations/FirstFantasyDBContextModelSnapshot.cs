@@ -24,6 +24,8 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<short>("LevelNummber");
+
                     b.Property<string>("LineColor")
                         .HasMaxLength(10);
 
@@ -33,7 +35,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LevelsTexts");
+                    b.ToTable("LevelText");
                 });
 #pragma warning restore 612, 618
         }

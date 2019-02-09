@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(FirstFantasyDBContext))]
-    [Migration("20181209140746_InitialCreate")]
+    [Migration("20181222151525_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,8 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<short>("LevelNummber");
+
                     b.Property<string>("LineColor")
                         .HasMaxLength(10);
 
@@ -35,7 +37,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LevelsTexts");
+                    b.ToTable("LevelText");
                 });
 #pragma warning restore 612, 618
         }

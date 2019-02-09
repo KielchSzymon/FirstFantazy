@@ -8,7 +8,7 @@ namespace DataAccess.Data
 {
     public class FirstFantasyDBContext : DbContext
     {
-        public DbSet<LevelText> LevelsTexts { get; set; }
+        public DbSet<LevelText> LevelText { get; set; }
 
         public FirstFantasyDBContext(DbContextOptions<FirstFantasyDBContext> options) : base(options)
         {
@@ -17,7 +17,7 @@ namespace DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LevelText>().ToTable("LevelsTexts");
+            modelBuilder.Entity<LevelText>().ToTable("LevelText");
         }
     }
 }
