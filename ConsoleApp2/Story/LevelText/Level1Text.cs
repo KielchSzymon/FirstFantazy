@@ -13,9 +13,9 @@ namespace FirstFantazy.Story.LevelText
     {
         IRepositoryLevelText repo;
 
-        public Level1Text(ServiceProvider serviceProvider)
+        public Level1Text(IRepositoryLevelText repository)
         {
-            repo = serviceProvider.GetService<IRepositoryLevelText>(); ;
+            repo = repository;
         }
 
         public void WackeUp(Hero hero)

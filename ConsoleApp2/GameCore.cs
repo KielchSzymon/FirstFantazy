@@ -20,8 +20,8 @@ namespace FirstFantazy.Core
         public GameCore(ServiceProvider serviceProvider)
         {
             hero = new Hero();
-            levels = new Levels();
-            this.serviceProvider = serviceProvider;
+            levels = new Levels(serviceProvider);
+            //this.serviceProvider = serviceProvider;
         }
 
         public void StartCore()
@@ -61,7 +61,7 @@ namespace FirstFantazy.Core
                 switch (levelNumber)
                 {
                     case 1:
-                        hero = levels.LoadLevel1(hero, sp);
+                        hero = levels.LoadLevel1(hero);
                         LoadLevel(2, sp);
                     break;
                     case 2:

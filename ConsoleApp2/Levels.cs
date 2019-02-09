@@ -13,19 +13,29 @@ using FirstFantazy_Scene;
 using FirstFantazy.Story;
 using FirstFantazy.Core;
 using Microsoft.Extensions.DependencyInjection;
+using RepositoryCommon;
 
 namespace FirstFantazy_Levels
 {
     public class Levels
     {
-        public Hero LoadLevel1(Hero hero, ServiceProvider serviceProvider)
+        ServiceProvider serviceProvider;
+
+        public Levels(ServiceProvider serviceProvider)
+        {
+            this.serviceProvider = serviceProvider;
+        }
+
+        public Hero LoadLevel1(Hero hero )
         {
             int i = 0;
             int direction = 0;
 
             TheBeginningOfTheLevel("1");
 
-            Level1Text level1Text = new Level1Text(serviceProvider);
+            var service =serviceProvider.GetService<IRepositoryLevelText>();
+
+            Level1Text level1Text = new Level1Text(service);
 
             Level1Text.HeroCondition(hero);
 
